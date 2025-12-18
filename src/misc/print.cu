@@ -1,3 +1,5 @@
+#include <cstdio>
+
 #include "print.cuh"
 #include <stdio.h>
 
