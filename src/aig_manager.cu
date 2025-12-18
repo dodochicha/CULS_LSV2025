@@ -629,7 +629,7 @@ void AIGMan::updateLevel(int * pLevel, int * pFanin0, int * pFanin1, int nObjs, 
 
 /* -------------- Algorithm Main Entrance -------------- */
 
-void AIGMan::rewrite(bool fUseZeros, bool fGPUDeduplicate) {
+void AIGMan::rewrite(bool fUseZeros, bool fGPUDeduplicate, bool fOptimizeLevel) {
     if (!aigCreated) {
         printf("rewrite: AIG is null! \n");
         return;
@@ -641,6 +641,8 @@ void AIGMan::rewrite(bool fUseZeros, bool fGPUDeduplicate) {
         printf("\n*****Perform Rewrite*****\n");
         if (fUseZeros)
             printf("rewrite: use zeros activated!\n");
+        if (fOptimizeLevel)
+            printf("rewrite: optimize level activated!\n");
     }
 
 clock_t startFullTime = clock();
@@ -655,7 +657,7 @@ clock_t startFullTime = clock();
         resetRewriteManager();
     
 clock_t startAlgTime = clock();
-    rwMan.Rewrite(fUseZeros, true);
+    rwMan.Rewrite(fUseZeros, true, fOptimizeLevel);
 prevAlgTime = clock() - startAlgTime;
 totalAlgTime += prevAlgTime;
     

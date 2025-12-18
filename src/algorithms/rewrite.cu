@@ -376,7 +376,7 @@ __device__ int Eval(int cur, int *match, int Class, Library *lib, int curId) {
 
 
 __global__ void EvaluateNode(int sz, int *bestout, int *fanin0, int *fanin1, int *isC0, int *isC1, int *nodeLevels, Cut *cuts, Cut* selectedCuts, int *nRef, 
-                             Library *lib, TableNode* hashTable, int fUseZeros) {
+                             Library *lib, TableNode* hashTable, int fUseZeros, int fOptimizeLevel) {
     if(blockIdx.x * blockDim.x + threadIdx.x >= sz) return;
     int id = 1 + blockIdx.x * blockDim.x + threadIdx.x, reduction = -1, bestLevel = 99999999, bestCut = -1, bestOut;
     int match[54], tableSize, tableId[TABLE_SIZE], tableNum[TABLE_SIZE];
@@ -428,10 +428,18 @@ __global__ void EvaluateNode(int sz, int *bestout, int *fanin0, int *fanin1, int
             // }
             if (saved - nodesAdded < 0 || (saved - nodesAdded == 0 && !fUseZeros))
                 continue;
-            if (saved - nodesAdded < reduction || (saved - nodesAdded == reduction && rtLevel >= bestLevel))
-                continue;
-            reduction = saved - nodesAdded;
+            // Choose optimization strategy based on fOptimizeLevel
+            if (fOptimizeLevel) {
+                // Optimize level: skip if level is worse, or if same level but node reduction is worse
+                if (rtLevel > bestLevel || (rtLevel == bestLevel && saved - nodesAdded < reduction))
+                    continue;
+            } else {
+                // Default: optimize node count (saved - nodesAdded), level is tie-breaker
+                if (saved - nodesAdded < reduction || (saved - nodesAdded == reduction && rtLevel >= bestLevel))
+                    continue;
+            }
             bestLevel = rtLevel;
+            reduction = saved - nodesAdded;
             bestCut = i;
             bestOut = out;
         }
@@ -686,7 +694,7 @@ void GPUSolver::CopyLib(Library CPUlib) {
     cudaMemcpy(lib, &CPUlib, sizeof(Library), cudaMemcpyHostToDevice);
 }
 
-void GPUSolver::EnumerateAndPreEvaluate(int *level, const vector<int> &levelCount, int n, int *CPUfanin0, int *CPUfanin1, int *CPUref, bool fUseZeros) {
+void GPUSolver::EnumerateAndPreEvaluate(int *level, const vector<int> &levelCount, int n, int *CPUfanin0, int *CPUfanin1, int *CPUref, bool fUseZeros, bool fOptimizeLevel) {
     int * nodeLevels = phase; // note, phase has not been used yet, so use its memory for now
     cudaMemcpy(nodeLevels, level, (n + 1) * sizeof(int), cudaMemcpyHostToDevice);
 
@@ -706,7 +714,7 @@ void GPUSolver::EnumerateAndPreEvaluate(int *level, const vector<int> &levelCoun
     ENUM_TIME += clock() - startTime;
     startTime = clock();
     BuildHashTable<<<BLOCK_NUMBER(n, LARGE_BLOCK_SIZE), LARGE_BLOCK_SIZE>>> (hashTable, n, fanin0, fanin1, isComplement0, isComplement1);           
-    EvaluateNode<<<BLOCK_NUMBER(n, LARGE_BLOCK_SIZE), LARGE_BLOCK_SIZE>>> (n, bestSubgraph, fanin0, fanin1, isComplement0, isComplement1, nodeLevels, cuts, selectedCuts, nRef, lib, hashTable, fUseZeros == true);
+    EvaluateNode<<<BLOCK_NUMBER(n, LARGE_BLOCK_SIZE), LARGE_BLOCK_SIZE>>> (n, bestSubgraph, fanin0, fanin1, isComplement0, isComplement1, nodeLevels, cuts, selectedCuts, nRef, lib, hashTable, fUseZeros == true, fOptimizeLevel ? 1 : 0);
     gpuErrchk( cudaDeviceSynchronize() );
     std::cerr << cudaGetLastError() << " in EvaluateNode " << std::endl;
 
@@ -808,7 +816,7 @@ void CPUSolver::Reset(int nInputs, int nOutputs, int nTotal,
     Reorder();
 }
 
-void CPUSolver::Rewrite(bool fUseZeros, bool GPUReplace) {
+void CPUSolver::Rewrite(bool fUseZeros, bool GPUReplace, bool fOptimizeLevel) {
     expected = 0;
     gpuSolver = new GPUSolver(n);
 
@@ -816,7 +824,7 @@ void CPUSolver::Rewrite(bool fUseZeros, bool GPUReplace) {
     ReadLibrary();
     gpuSolver->CopyLib(lib);
     LevelCount();
-    gpuSolver->EnumerateAndPreEvaluate(level, levelCount, n, fanin0, fanin1, ref, fUseZeros);
+    gpuSolver->EnumerateAndPreEvaluate(level, levelCount, n, fanin0, fanin1, ref, fUseZeros, fOptimizeLevel);
     prt << "Finished GPU enumeration and pre-evaluation" << endl;
     auto startTime = clock();
     if (GPUReplace) {
@@ -978,7 +986,7 @@ int currWaveIndices(int n, int * vBuffer, const std::vector<int> & levelCount, i
 }
 
 __global__ void EvaluateNodeWave(int sz, int *bestout, int *fanin0, int *fanin1, int *isC0, int *isC1, int *nodeLevels, Cut *cuts, Cut* selectedCuts, int *nRef, 
-                                 Library * lib, TableNode* hashTable, const int * vWaveMask, int fUseZeros) {
+                                 Library * lib, TableNode* hashTable, const int * vWaveMask, int fUseZeros, int fOptimizeLevel) {
     if(blockIdx.x * blockDim.x + threadIdx.x >= sz) return;
     int id = 1 + blockIdx.x * blockDim.x + threadIdx.x;
     if (!vWaveMask[id]) {
@@ -1037,10 +1045,18 @@ __global__ void EvaluateNodeWave(int sz, int *bestout, int *fanin0, int *fanin1,
             // }
             if (saved - nodesAdded < 0 || (saved - nodesAdded == 0 && !fUseZeros))
                 continue;
-            if (saved - nodesAdded < reduction || (saved - nodesAdded == reduction && rtLevel >= bestLevel))
-                continue;
-            reduction = saved - nodesAdded;
+            // Choose optimization strategy based on fOptimizeLevel
+            if (fOptimizeLevel) {
+                // Optimize level: skip if level is worse, or if same level but node reduction is worse
+                if (rtLevel > bestLevel || (rtLevel == bestLevel && saved - nodesAdded < reduction))
+                    continue;
+            } else {
+                // Default: optimize node count (saved - nodesAdded), level is tie-breaker
+                if (saved - nodesAdded < reduction || (saved - nodesAdded == reduction && rtLevel >= bestLevel))
+                    continue;
+            }
             bestLevel = rtLevel;
+            reduction = saved - nodesAdded;
             bestCut = i;
             bestOut = out;
         }
@@ -1056,7 +1072,7 @@ __global__ void EvaluateNodeWave(int sz, int *bestout, int *fanin0, int *fanin1,
 }
 
 int GPUSolver::EnumerateAndPreEvaluateWave(int currIter, int *level, const std::vector<int> &levelCount, 
-                                           int n, int *CPUfanin0, int *CPUfanin1, int *CPUref, bool fUseZeros) {
+                                           int n, int *CPUfanin0, int *CPUfanin1, int *CPUref, bool fUseZeros, bool fOptimizeLevel) {
     int waveWidth = 100, waveStride = -1;
     int * vWaveMask = replace; // note, replace has not been used yet, so use its memory for now
     int maxLevel = currWaveIndices(n, vWaveMask, levelCount, currIter, waveWidth, waveStride);
@@ -1088,7 +1104,7 @@ int GPUSolver::EnumerateAndPreEvaluateWave(int currIter, int *level, const std::
     startTime = clock();
     BuildHashTable<<<BLOCK_NUMBER(n, LARGE_BLOCK_SIZE), LARGE_BLOCK_SIZE>>>(hashTable, n, fanin0, fanin1, isComplement0, isComplement1);
     EvaluateNodeWave<<<BLOCK_NUMBER(n, 768), 768>>>(n, bestSubgraph, fanin0, fanin1, isComplement0, isComplement1, 
-                                                    nodeLevels, cuts, selectedCuts, nRef, lib, hashTable, vWaveMask, fUseZeros == true);
+                                                    nodeLevels, cuts, selectedCuts, nRef, lib, hashTable, vWaveMask, fUseZeros == true, fOptimizeLevel ? 1 : 0);
     gpuErrchk( cudaDeviceSynchronize() );
     std::cerr << "Error code " << cudaGetLastError() << " in EvaluateNode " << std::endl;
     EVAL_TIME += clock() - startTime;
@@ -1096,7 +1112,7 @@ int GPUSolver::EnumerateAndPreEvaluateWave(int currIter, int *level, const std::
     return 1;
 }
 
-void CPUSolver::RewriteWave(bool fUseZeros) {
+void CPUSolver::RewriteWave(bool fUseZeros, bool fOptimizeLevel) {
     ReadLibrary();
 
     for (int it = 0; ; it++) {
@@ -1106,7 +1122,7 @@ void CPUSolver::RewriteWave(bool fUseZeros) {
         gpuSolver = new GPUSolver(n);
         gpuSolver->CopyLib(lib);
 
-        if (!gpuSolver->EnumerateAndPreEvaluateWave(it, level, levelCount, n, fanin0, fanin1, ref, fUseZeros)) {
+        if (!gpuSolver->EnumerateAndPreEvaluateWave(it, level, levelCount, n, fanin0, fanin1, ref, fUseZeros, fOptimizeLevel)) {
             printf("end at iter %d\n", it);
             delete gpuSolver;
             break;

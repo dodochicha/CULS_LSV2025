@@ -1,4 +1,5 @@
 #include "print.cuh"
+#include <stdio.h>
 
 __global__ void printAIGA(const int * pFanin0, const int * pFanin1, 
                          const int * pOuts, int nPIs, int nPOs, int nObjs) {
