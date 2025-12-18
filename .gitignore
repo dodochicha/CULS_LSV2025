@@ -9,8 +9,9 @@ build*/
 *.txt
 *.blif
 test_cuda*
-abc*
+abc
 .cache/
 logic_my_suite/
 *.py
 results/
+abc_py
