@@ -1,3 +1,5 @@
+#include <cstdio>
+
 #include "print.cuh"
 
 __global__ void printAIGA(const int * pFanin0, const int * pFanin1, 
