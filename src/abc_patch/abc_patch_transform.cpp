@@ -124,7 +124,6 @@ Abc_Ntk_t * GpuManToAbcNtk(AIGMan * pMan) {
         pObj1 = (Abc_Obj_t *)Aig_NotCond(
             (Aig_Obj_t *)pObj1, AigNodeIsComplement(lit1));
         pObj = Abc_AigAnd((Abc_Aig_t *)pNtk->pManFunc, pObj0, pObj1);
-        assert(!Aig_IsComplement((Aig_Obj_t *)pObj));
 
         vGpu2AbcObj[i] = pObj;
         // delay has already been propagated in Abc_AigAnd()

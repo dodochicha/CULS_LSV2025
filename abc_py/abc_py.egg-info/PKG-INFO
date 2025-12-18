@@ -1,0 +1,7 @@
+Metadata-Version: 2.1
+Name: abc-py
+Version: 0.0.1
+Summary: The python interface to ABC
+Author: Keren Zhu
+Author-email: keren.zhu@utexas.edu
+License-File: LICENSE
