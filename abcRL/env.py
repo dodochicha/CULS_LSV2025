@@ -1,0 +1,568 @@
+##
+# @file env.py
+# @author Keren Zhu
+# @date 10/25/2019
+# @brief The environment classes
+#
+
+import abc_py as abcPy
+import numpy as np
+import graphExtractor as GE
+import torch
+from dgl.nn.pytorch import GraphConv
+import dgl
+import os
+from contextlib import contextmanager
+
+
+@contextmanager
+def _redirect_c_stdout_stderr(path):
+    """
+    Redirect C/C++ stdout+stderr (fd 1/2) to a file for the duration of the context.
+    This affects prints coming from the C++ backend (printf/cout) during abc_py calls.
+    """
+    if not path:
+        yield
+        return
+
+    os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
+    with open(path, "a", buffering=1) as f:
+        f.flush()
+        orig_out = os.dup(1)
+        orig_err = os.dup(2)
+        try:
+            os.dup2(f.fileno(), 1)
+            os.dup2(f.fileno(), 2)
+            yield
+        finally:
+            os.dup2(orig_out, 1)
+            os.dup2(orig_err, 2)
+            os.close(orig_out)
+            os.close(orig_err)
+
+
+
+class EnvNaive2(object):
+    """
+    @brief the overall concept of environment, the different. use the compress2rs as target
+    """
+    def __init__(self, aigfile):
+        self._abc = abcPy.AbcInterface()
+        self._aigfile = aigfile
+        self._abc.start()
+        self.lenSeq = 0
+        self._abc.read(self._aigfile)
+        initStats = self._abc.aigStats() # The initial AIG statistics
+        self.initNumAnd = float(initStats.numAnd)
+        self.initLev = float(initStats.lev)
+        self.resyn2() # run a compress2rs as target
+        self.resyn2()
+        resyn2Stats = self._abc.aigStats()
+        totalReward = self.statValue(initStats) - self.statValue(resyn2Stats)
+        self._rewardBaseline = totalReward / 20.0 # 18 is the length of compress2rs sequence
+        print("baseline num AND ", resyn2Stats.numAnd, " total reward ", totalReward )
+    def resyn2(self):
+        self._abc.balance(l=False)
+        self._abc.rewrite(l=False)
+        self._abc.refactor(l=False)
+        self._abc.balance(l=False)
+        self._abc.rewrite(l=False)
+        self._abc.rewrite(l=False, z=True)
+        self._abc.balance(l=False)
+        self._abc.refactor(l=False, z=True)
+        self._abc.rewrite(l=False, z=True)
+        self._abc.balance(l=False)
+    def reset(self):
+        self.lenSeq = 0
+        self._abc.end()
+        self._abc.start()
+        self._abc.read(self._aigfile)
+        self._lastStats = self._abc.aigStats() # The initial AIG statistics
+        self._curStats = self._lastStats # the current AIG statistics
+        self.lastAct = self.numActions() - 1
+        self.lastAct2 = self.numActions() - 1
+        self.lastAct3 = self.numActions() - 1
+        self.lastAct4 = self.numActions() - 1
+        self.actsTaken = np.zeros(self.numActions())
+        return self.state()
+    def close(self):
+        self.reset()
+    def step(self, actionIdx):
+        self.takeAction(actionIdx)
+        nextState = self.state()
+        reward = self.reward()
+        done = False
+        if (self.lenSeq >= 20):
+            done = True
+        return nextState,reward,done,0
+    def takeAction(self, actionIdx):
+        """
+        @return true: episode is end
+        """
+        # "b -l; rs -K 6 -l; rw -l; rs -K 6 -N 2 -l; rf -l; rs -K 8 -l; b -l; rs -K 8 -N 2 -l; rw -l; rs -K 10 -l; rwz -l; rs -K      10 -N 2 -l; b -l; rs -K 12 -l; rfz -l; rs -K 12 -N 2 -l; rwz -l; b -l
+        self.lastAct4 = self.lastAct3
+        self.lastAct3 = self.lastAct2
+        self.lastAct2 = self.lastAct
+        self.lastAct = actionIdx
+        #self.actsTaken[actionIdx] += 1
+        self.lenSeq += 1
+        """
+        # Compress2rs actions
+        if actionIdx == 0:
+            self._abc.balance(l=True) # b -l
+        elif actionIdx == 1:
+            self._abc.resub(k=6, l=True) # rs -K 6 -l
+        #elif actionIdx == 2:
+        #    self._abc.resub(k=6, n=2, l=True) # rs -K 6 -N 2 -l
+        #elif actionIdx == 3:
+        #    self._abc.resub(k=8, l=True) # rs -K 8 -l
+        #elif actionIdx == 4:
+        #    self._abc.resub(k=10, l=True) # rs -K 10 -l
+        #elif actionIdx == 5:
+        #    self._abc.resub(k=12, l=True) # rs -K 12 -l
+        #elif actionIdx == 6:
+        #    self._abc.resub(k=10, n=2, l=True) # rs -K 10 -N 2 -l
+        elif actionIdx == 2:
+            self._abc.resub(k=12, n=2, l=True) # rs - K 12 -N 2 -l
+        elif actionIdx == 3:
+            self._abc.rewrite(l=True) # rw -l
+        #elif actionIdx == 3:
+        #    self._abc.rewrite(l=True, z=True) # rwz -l
+        elif actionIdx == 4:
+            self._abc.refactor(l=True) # rf -l
+        #elif actionIdx == 4:
+        #    self._abc.refactor(l=True, z=True) # rfz -l
+        elif actionIdx == 5: # terminal
+            self._abc.end()
+            return True
+        else:
+            assert(False)
+        """
+        if actionIdx == 0:
+            self._abc.balance(l=False) # b
+        elif actionIdx == 1:
+            self._abc.rewrite(l=False) # rw
+        elif actionIdx == 2:
+            self._abc.refactor(l=False) # rf
+        elif actionIdx == 3:
+            self._abc.rewrite(l=False, z=True) #rw -z
+        elif actionIdx == 4:
+            self._abc.refactor(l=False, z=True) #rs
+        elif actionIdx == 5:
+            self._abc.end()
+            return True
+        else:
+            assert(False)
+        """
+        elif actionIdx == 3:
+            self._abc.rewrite(z=True) #rwz
+        elif actionIdx == 4:
+            self._abc.refactor(z=True) #rfz
+        """
+
+
+        # update the statitics
+        self._lastStats = self._curStats
+        self._curStats = self._abc.aigStats()
+        return False
+    def state(self):
+        """
+        @brief current state
+        """
+        oneHotAct = np.zeros(self.numActions())
+        np.put(oneHotAct, self.lastAct, 1)
+        lastOneHotActs  = np.zeros(self.numActions())
+        lastOneHotActs[self.lastAct2] += 1/3
+        lastOneHotActs[self.lastAct3] += 1/3
+        lastOneHotActs[self.lastAct] += 1/3
+        stateArray = np.array([self._curStats.numAnd / self.initNumAnd, self._curStats.lev / self.initLev,
+            self._lastStats.numAnd / self.initNumAnd, self._lastStats.lev / self.initLev])
+        stepArray = np.array([float(self.lenSeq) / 20.0])
+        combined = np.concatenate((stateArray, lastOneHotActs, stepArray), axis=-1)
+        #combined = np.expand_dims(combined, axis=0)
+        #return stateArray.astype(np.float32)
+        return torch.from_numpy(combined.astype(np.float32)).float()
+    def reward(self):
+        if self.lastAct == 5: #term
+            return 0
+        return self.statValue(self._lastStats) - self.statValue(self._curStats) - self._rewardBaseline
+        #return -self._lastStats.numAnd + self._curStats.numAnd - 1
+        if (self._curStats.numAnd < self._lastStats.numAnd and self._curStats.lev < self._lastStats.lev):
+            return 2
+        elif (self._curStats.numAnd < self._lastStats.numAnd and self._curStats.lev == self._lastStats.lev):
+            return 0
+        elif (self._curStats.numAnd == self._lastStats.numAnd and self._curStats.lev < self._lastStats.lev):
+            return 1
+        else:
+            return -2
+    def numActions(self):
+        return 5
+    def dimState(self):
+        return 4 + self.numActions() * 1 + 1
+    def returns(self):
+        return [self._curStats.numAnd , self._curStats.lev]
+    def statValue(self, stat):
+        return float(stat.numAnd)  / float(self.initNumAnd) #  + float(stat.lev)  / float(self.initLev)
+        #return stat.numAnd + stat.lev * 10
+    def curStatsValue(self):
+        return self.statValue(self._curStats)
+    def seed(self, sd):
+        pass
+    def compress2rs(self):
+        self._abc.compress2rs()
+
+
+
+
+
+
+class EnvGraph(object):
+    """
+    @brief the overall concept of environment, the different. use the compress2rs as target
+    """
+    def __init__(self, aigfile, cxx_log_path=None):
+        self._abc = abcPy.AbcInterface()
+        self._aigfile = aigfile
+        self._abc.start()
+        self.lenSeq = 0
+        self._abc.read(self._aigfile)
+        initStats = self._abc.aigStats() # The initial AIG statistics
+        self.initNumAnd = float(initStats.numAnd)
+        self.initLev = float(initStats.lev)
+        self.resyn2() # run a compress2rs as target
+        self.resyn2()
+        resyn2Stats = self._abc.aigStats()
+        totalReward = self.statValue(initStats) - self.statValue(resyn2Stats)
+        self._rewardBaseline = totalReward / 20.0 # 18 is the length of compress2rs sequence
+        print("baseline num AND ", resyn2Stats.numAnd, " total reward ", totalReward )
+    def resyn2(self):
+        self._abc.balance(l=False)
+        self._abc.rewrite(l=False)
+        self._abc.refactor(l=False)
+        self._abc.balance(l=False)
+        self._abc.rewrite(l=False)
+        self._abc.rewrite(l=False, z=True)
+        self._abc.balance(l=False)
+        self._abc.refactor(l=False, z=True)
+        self._abc.rewrite(l=False, z=True)
+        self._abc.balance(l=False)
+    def reset(self):
+        self.lenSeq = 0
+        self._abc.end()
+        self._abc.start()
+        self._abc.read(self._aigfile)
+        self._lastStats = self._abc.aigStats() # The initial AIG statistics
+        self._curStats = self._lastStats # the current AIG statistics
+        self.lastAct = self.numActions() - 1
+        self.lastAct2 = self.numActions() - 1
+        self.lastAct3 = self.numActions() - 1
+        self.lastAct4 = self.numActions() - 1
+        self.actsTaken = np.zeros(self.numActions())
+        return self.state()
+    def close(self):
+        self.reset()
+    def step(self, actionIdx):
+        self.takeAction(actionIdx)
+        nextState = self.state()
+        reward = self.reward()
+        done = False
+        if (self.lenSeq >= 20):
+            done = True
+        return nextState,reward,done,0
+    def takeAction(self, actionIdx):
+        """
+        @return true: episode is end
+        """
+        # "b -l; rs -K 6 -l; rw -l; rs -K 6 -N 2 -l; rf -l; rs -K 8 -l; b -l; rs -K 8 -N 2 -l; rw -l; rs -K 10 -l; rwz -l; rs -K      10 -N 2 -l; b -l; rs -K 12 -l; rfz -l; rs -K 12 -N 2 -l; rwz -l; b -l
+        self.lastAct4 = self.lastAct3
+        self.lastAct3 = self.lastAct2
+        self.lastAct2 = self.lastAct
+        self.lastAct = actionIdx
+        #self.actsTaken[actionIdx] += 1
+        self.lenSeq += 1
+        """
+        # Compress2rs actions
+        if actionIdx == 0:
+            self._abc.balance(l=True) # b -l
+        elif actionIdx == 1:
+            self._abc.resub(k=6, l=True) # rs -K 6 -l
+        #elif actionIdx == 2:
+        #    self._abc.resub(k=6, n=2, l=True) # rs -K 6 -N 2 -l
+        #elif actionIdx == 3:
+        #    self._abc.resub(k=8, l=True) # rs -K 8 -l
+        #elif actionIdx == 4:
+        #    self._abc.resub(k=10, l=True) # rs -K 10 -l
+        #elif actionIdx == 5:
+        #    self._abc.resub(k=12, l=True) # rs -K 12 -l
+        #elif actionIdx == 6:
+        #    self._abc.resub(k=10, n=2, l=True) # rs -K 10 -N 2 -l
+        elif actionIdx == 2:
+            self._abc.resub(k=12, n=2, l=True) # rs - K 12 -N 2 -l
+        elif actionIdx == 3:
+            self._abc.rewrite(l=True) # rw -l
+        #elif actionIdx == 3:
+        #    self._abc.rewrite(l=True, z=True) # rwz -l
+        elif actionIdx == 4:
+            self._abc.refactor(l=True) # rf -l
+        #elif actionIdx == 4:
+        #    self._abc.refactor(l=True, z=True) # rfz -l
+        elif actionIdx == 5: # terminal
+            self._abc.end()
+            return True
+        else:
+            assert(False)
+        """
+        if actionIdx == 0:
+            self._abc.balance(l=False) # b
+        elif actionIdx == 1:
+            self._abc.rewrite(l=False) # rw
+        elif actionIdx == 2:
+            self._abc.refactor(l=False) # rf
+        elif actionIdx == 3:
+            self._abc.rewrite(l=False, z=True) #rw -z
+        elif actionIdx == 4:
+            self._abc.refactor(l=False, z=True) #rs
+        elif actionIdx == 5:
+            self._abc.end()
+            return True
+        else:
+            assert(False)
+        """
+        elif actionIdx == 3:
+            self._abc.rewrite(z=True) #rwz
+        elif actionIdx == 4:
+            self._abc.refactor(z=True) #rfz
+        """
+
+
+        # update the statitics
+        self._lastStats = self._curStats
+        self._curStats = self._abc.aigStats()
+        return False
+    def state(self):
+        """
+        @brief current state
+        """
+        oneHotAct = np.zeros(self.numActions())
+        np.put(oneHotAct, self.lastAct, 1)
+        lastOneHotActs  = np.zeros(self.numActions())
+        lastOneHotActs[self.lastAct2] += 1/3
+        lastOneHotActs[self.lastAct3] += 1/3
+        lastOneHotActs[self.lastAct] += 1/3
+        stateArray = np.array([self._curStats.numAnd / self.initNumAnd, self._curStats.lev / self.initLev,
+            self._lastStats.numAnd / self.initNumAnd, self._lastStats.lev / self.initLev])
+        stepArray = np.array([float(self.lenSeq) / 20.0])
+        combined = np.concatenate((stateArray, lastOneHotActs, stepArray), axis=-1)
+        #combined = np.expand_dims(combined, axis=0)
+        #return stateArray.astype(np.float32)
+        combined_torch =  torch.from_numpy(combined.astype(np.float32)).float()
+        graph = GE.extract_dgl_graph(self._abc)
+        return (combined_torch, graph)
+    def reward(self):
+        if self.lastAct == 5: #term
+            return 0
+        return self.statValue(self._lastStats) - self.statValue(self._curStats) - self._rewardBaseline
+        #return -self._lastStats.numAnd + self._curStats.numAnd - 1
+        if (self._curStats.numAnd < self._lastStats.numAnd and self._curStats.lev < self._lastStats.lev):
+            return 2
+        elif (self._curStats.numAnd < self._lastStats.numAnd and self._curStats.lev == self._lastStats.lev):
+            return 0
+        elif (self._curStats.numAnd == self._lastStats.numAnd and self._curStats.lev < self._lastStats.lev):
+            return 1
+        else:
+            return -2
+    def numActions(self):
+        return 5
+    def dimState(self):
+        return 4 + self.numActions() * 1 + 1
+    def returns(self):
+        return [self._curStats.numAnd , self._curStats.lev]
+    def statValue(self, stat):
+        return float(stat.lev)  / float(self.initLev)
+        return float(stat.numAnd)  / float(self.initNumAnd) #  + float(stat.lev)  / float(self.initLev)
+        #return stat.numAnd + stat.lev * 10
+    def curStatsValue(self):
+        return self.statValue(self._curStats)
+    def seed(self, sd):
+        pass
+    def compress2rs(self):
+        self._abc.compress2rs()
+
+
+class EnvGraphGPU(object):
+    """
+    @brief EnvGraph variant that runs CULS GPU commands through AbcInterface.abc_command(...)
+
+    Notes:
+    - GPU standalone-mode commands are prefixed by 'g' (e.g. b -> gb, rw -> grw, rf -> grf).
+    - Use 'gget' to convert ABC AIG -> GPU, and 'gput' to convert GPU -> ABC AIG.
+      We call 'gput' before querying stats/graph to keep compatibility with aigStats() and graph extraction.
+    """
+
+    def __init__(self, aigfile, cxx_log_path=None):
+        self._abc = abcPy.AbcInterface()
+        self._aigfile = aigfile
+        self._cxx_log_path = cxx_log_path
+        self._abc.start()
+        self.lenSeq = 0
+        self._is_on_gpu = False
+
+        self._abc.read(self._aigfile)
+        initStats = self._abc.aigStats()  # The initial AIG statistics
+        self.initNumAnd = float(initStats.numAnd)
+        self.initLev = float(initStats.lev)
+
+        # Baseline uses two passes of resyn2, mirroring EnvGraph.
+        self._ensure_gpu()
+        self.resyn2()
+        self.resyn2()
+        self._gpu_put()
+
+        resyn2Stats = self._abc.aigStats()
+        totalReward = self.statValue(initStats) - self.statValue(resyn2Stats)
+        self._rewardBaseline = totalReward / 20.0
+        print("baseline num AND ", resyn2Stats.numAnd, " total reward ", totalReward)
+
+    def _ensure_gpu(self):
+        if self._is_on_gpu:
+            return
+        with _redirect_c_stdout_stderr(self._cxx_log_path):
+            ok = self._abc.abc_command("gget")
+        if not ok:
+            raise RuntimeError(
+                "ABC GPU command 'gget' failed. "
+                "Make sure abc_py is built with CULS GPU enabled (ABC_PY_ENABLE_CULS_GPU=ON)."
+            )
+        self._is_on_gpu = True
+
+    def _gpu_put(self):
+        if not self._is_on_gpu:
+            return
+        with _redirect_c_stdout_stderr(self._cxx_log_path):
+            ok = self._abc.abc_command("gput")
+        if not ok:
+            raise RuntimeError("ABC GPU command 'gput' failed.")
+        self._is_on_gpu = False
+
+    def _gpu_command(self, cmd):
+        self._ensure_gpu()
+        with _redirect_c_stdout_stderr(self._cxx_log_path):
+            ok = self._abc.abc_command(cmd)
+        if not ok:
+            raise RuntimeError(f"ABC GPU command failed: {cmd!r}")
+        return ok
+
+    def resyn2(self):
+        self._gpu_command("gb")
+        self._gpu_command("grw")
+        self._gpu_command("grf -m")
+        self._gpu_command("gb")
+        self._gpu_command("grw")
+        self._gpu_command("grw -z")
+        self._gpu_command("gb")
+        self._gpu_command("grf -m -z")
+        self._gpu_command("grw -z")
+        self._gpu_command("gb")
+
+    def reset(self):
+        self.lenSeq = 0
+        self._abc.end()
+        self._abc.start()
+        self._is_on_gpu = False
+        self._abc.read(self._aigfile)
+        with _redirect_c_stdout_stderr(self._cxx_log_path):
+            self._lastStats = self._abc.aigStats()  # The initial AIG statistics
+        self._curStats = self._lastStats  # the current AIG statistics
+        self.lastAct = self.numActions() - 1
+        self.lastAct2 = self.numActions() - 1
+        self.lastAct3 = self.numActions() - 1
+        self.lastAct4 = self.numActions() - 1
+        self.actsTaken = np.zeros(self.numActions())
+        return self.state()
+
+    def close(self):
+        self.reset()
+
+    def step(self, actionIdx):
+        self.takeAction(actionIdx)
+        nextState = self.state()
+        reward = self.reward()
+        done = False
+        if self.lenSeq >= 20:
+            done = True
+        return nextState, reward, done, 0
+
+    def takeAction(self, actionIdx):
+        self.lastAct4 = self.lastAct3
+        self.lastAct3 = self.lastAct2
+        self.lastAct2 = self.lastAct
+        self.lastAct = actionIdx
+        self.lenSeq += 1
+
+        if actionIdx == 0:
+            self._gpu_command("gb")
+        elif actionIdx == 1:
+            self._gpu_command("grw")
+        elif actionIdx == 2:
+            self._gpu_command("grf -m")
+        elif actionIdx == 3:
+            self._gpu_command("grw -z")
+        elif actionIdx == 4:
+            self._gpu_command("grf -m -z")
+        elif actionIdx == 5:
+            self._abc.end()
+            return True
+        else:
+            assert False
+
+        # Sync GPU -> ABC so aigStats() and graph extraction see the updated AIG.
+        self._gpu_put()
+
+        self._lastStats = self._curStats
+        with _redirect_c_stdout_stderr(self._cxx_log_path):
+            self._curStats = self._abc.aigStats()
+        return False
+
+    def state(self):
+        oneHotAct = np.zeros(self.numActions())
+        np.put(oneHotAct, self.lastAct, 1)
+        lastOneHotActs = np.zeros(self.numActions())
+        lastOneHotActs[self.lastAct2] += 1 / 3
+        lastOneHotActs[self.lastAct3] += 1 / 3
+        lastOneHotActs[self.lastAct] += 1 / 3
+        stateArray = np.array(
+            [
+                self._curStats.numAnd / self.initNumAnd,
+                self._curStats.lev / self.initLev,
+                self._lastStats.numAnd / self.initNumAnd,
+                self._lastStats.lev / self.initLev,
+            ]
+        )
+        stepArray = np.array([float(self.lenSeq) / 20.0])
+        combined = np.concatenate((stateArray, lastOneHotActs, stepArray), axis=-1)
+        combined_torch = torch.from_numpy(combined.astype(np.float32)).float()
+        graph = GE.extract_dgl_graph(self._abc)
+        return (combined_torch, graph)
+
+    def reward(self):
+        if self.lastAct == 5:  # term
+            return 0
+        return self.statValue(self._lastStats) - self.statValue(self._curStats) - self._rewardBaseline
+
+    def numActions(self):
+        return 5
+
+    def dimState(self):
+        return 4 + self.numActions() * 1 + 1
+
+    def returns(self):
+        return [self._curStats.numAnd, self._curStats.lev]
+
+    def statValue(self, stat):
+        return float(stat.lev) / float(self.initLev)
+
+    def curStatsValue(self):
+        return self.statValue(self._curStats)
+
+    def seed(self, sd):
+        pass

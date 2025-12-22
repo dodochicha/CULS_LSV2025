@@ -2,16 +2,18 @@
 isop
 build*/
 *.o
+*.so
 *.log
 *.csv
-*.aig
+# *.aig
 *.aag
 *.txt
-*.blif
+# *.blif
 test_cuda*
 abc
 .cache/
 logic_my_suite/
-*.py
 results/
-
+*.pyc
+abcRL/__pycache__
+abc_py/abc_py.cpython-37m-x86_64-linux-gnu.so
