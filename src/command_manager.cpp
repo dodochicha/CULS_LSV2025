@@ -79,18 +79,19 @@ int balanceHandler(AIGMan & aigman, const std::vector<std::string> & vLiterals) 
 }
 
 int rewriteHandler(AIGMan & aigman, const std::vector<std::string> & vLiterals) {
-    bool fUseZeros = false, fGPUDeduplicate = true;
+    bool fUseZeros = false, fGPUDeduplicate = true, fOptimizeLevel = false;
 
     CLI::App parser("Perform rewrite");
     parser.add_flag("-z", fUseZeros, descWithDefault("using zero", fUseZeros));
     parser.add_flag("-d", fGPUDeduplicate, descWithDefault("using GPU deduplicate", fGPUDeduplicate));
+    parser.add_flag("-l", fOptimizeLevel, "if provided, optimize level instead of node count");
     parser.add_option("-v", aigman.verbose, descWithDefault("verbose level", aigman.verbose));
 
     int ret;
     if((ret = parseCmd(parser, vLiterals)) < 2 )
         return ret;
 
-    aigman.rewrite(fUseZeros, fGPUDeduplicate);
+    aigman.rewrite(fUseZeros, fGPUDeduplicate, fOptimizeLevel);
     return 0;
 }
 
@@ -133,10 +134,12 @@ int resyn2Handler(AIGMan & aigman, const std::vector<std::string> & vLiterals) {
     // rw -z -d; rw -z -d; b -s
 
     int cutSize = 12;
+    bool fOptimizeLevel = false;
 
     CLI::App parser("Perform resyn2");
     parser.add_option("-K", cutSize, 
                       descWithDefault("maximum cut size used in refactoring", cutSize));
+    parser.add_flag("-l", fOptimizeLevel, "if provided, optimize level instead of node count for rewrite operations");
     parser.add_option("-v", aigman.verbose, descWithDefault("verbose level", aigman.verbose));
     
     int ret;
@@ -149,20 +152,37 @@ int resyn2Handler(AIGMan & aigman, const std::vector<std::string> & vLiterals) {
 clock_t startTime = clock();
 
     aigman.balance(1);
-    aigman.rewrite(false, true);
+    aigman.rewrite(false, true, fOptimizeLevel);
     aigman.refactor(true, false, cutSize);
     aigman.strash(false, true);
     aigman.balance(1);
-    aigman.rewrite(false, true);
-    aigman.rewrite(true, true);
-    aigman.rewrite(true, true);
+    aigman.rewrite(false, true, fOptimizeLevel);
+    aigman.rewrite(true, true, fOptimizeLevel);
+    aigman.rewrite(true, true, fOptimizeLevel);
     aigman.balance(0);
     aigman.refactor(true, true, cutSize);
     aigman.strash(false, true);
-    aigman.rewrite(true, true);
-    aigman.rewrite(true, true);
+    aigman.rewrite(true, true, fOptimizeLevel);
+    aigman.rewrite(true, true, fOptimizeLevel);
     aigman.balance(0);
     aigman.strash(false, true);
+
+    aigman.balance(1);
+    aigman.rewrite(false, true, 0);
+    aigman.refactor(true, false, cutSize);
+    aigman.strash(false, true);
+    aigman.balance(1);
+    aigman.rewrite(false, true, 0);
+    aigman.rewrite(true, true, 0);
+    aigman.rewrite(true, true, 0);
+    aigman.balance(0);
+    aigman.refactor(true, true, cutSize);
+    aigman.strash(false, true);
+    aigman.rewrite(true, true, 0);
+    aigman.rewrite(true, true, 0);
+    aigman.balance(0);
+    aigman.strash(false, true);
+
 
 aigman.setAlgTime(startTime);
 aigman.setFullTime(startTime);
@@ -200,9 +220,11 @@ int resyn2rsHandler(AIGMan & aigman, const std::vector<std::string> & vLiterals)
     // rs -k 10; st; rf -m -z -K 10; st; rs -k 10 -n 2; rw -d -z; b; st;
 
     int cutSize = 12;
+    bool fOptimizeLevel = false;
     CLI::App parser("Perform resyn2rs");
     parser.add_option("-K", cutSize, 
                       descWithDefault("maximum cut size used in refactoring", cutSize));
+    parser.add_flag("-l", fOptimizeLevel, "if provided, optimize level instead of node count for rewrite operations");
     parser.add_option("-v", aigman.verbose, descWithDefault("verbose level", aigman.verbose));
     
     int ret;
@@ -217,7 +239,7 @@ clock_t startTime = clock();
     aigman.balance(1);
     aigman.strash(false, true);
     aigman.resub(false, true, false, 6, 1);
-    aigman.rewrite(false, true);
+    aigman.rewrite(false, true, fOptimizeLevel);
     aigman.resub(false, true, false, 6, 2);
     aigman.strash(false, true);
     aigman.refactor(true, false, cutSize);
@@ -227,10 +249,10 @@ clock_t startTime = clock();
     aigman.balance(1);
     aigman.strash(false, true);
     aigman.resub(false, true, false, 8, 2);
-    aigman.rewrite(false, true);
+    aigman.rewrite(false, true, fOptimizeLevel);
 
     aigman.resub(false, true, false, 10, 1);
-    aigman.rewrite(true, true);
+    aigman.rewrite(true, true, fOptimizeLevel);
     aigman.resub(false, true, false, 10, 2);
     aigman.balance(1);
     aigman.strash(false, true);
@@ -240,7 +262,7 @@ clock_t startTime = clock();
     aigman.refactor(true, true, cutSize);
     aigman.strash(false, true);
     aigman.resub(false, true, false, 10, 2);
-    aigman.rewrite(true, true);
+    aigman.rewrite(true, true, fOptimizeLevel);
     aigman.balance(1);
     aigman.strash(false, true);
 
