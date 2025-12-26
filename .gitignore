@@ -4,7 +4,6 @@ build*/
 *.o
 *.log
 *.csv
-*.aig
 *.aag
 *.txt
 *.blif
