@@ -14,6 +14,7 @@ from env import EnvGraphGPU as Env
 
 import numpy as np
 import statistics
+import matplotlib.pyplot as plt
 
 
 class AbcReturn:
@@ -40,14 +41,27 @@ def testReinforce(filename, ben):
     reinforce = RF.Reinforce(env, 0.9, vApprox, vbaseline)
 
     lastfive = []
+    bestReward = None
+    bestActions = None
+    rewardHistory = []
+    nodeHistory = []
+    levelHistory = []
 
     for idx in range(200):
         returns = reinforce.episode(phaseTrain=True)
         seqLen = reinforce.lenSeq
         line = "iter " + str(idx) + " returns "+ str(returns) + " seq Length " + str(seqLen) + "\n"
-        if idx >= 195:
+        if idx >= 0:
             lastfive.append(AbcReturn(returns))
         print(line)
+        if reinforce.lastSumReward is not None:
+            if bestReward is None or reinforce.lastSumReward > bestReward:
+                bestReward = reinforce.lastSumReward
+                bestActions = list(reinforce.lastTrajectory.actions)
+        if reinforce.lastSumReward is not None:
+            rewardHistory.append(reinforce.lastSumReward)
+        nodeHistory.append(returns[0])
+        levelHistory.append(returns[1])
         #reinforce.replay()
     resultName = "./results/" + ben + ".csv"
     #lastfive.sort(key=lambda x : x.level)
@@ -60,6 +74,24 @@ def testReinforce(filename, ben):
         line += "\n"
         andLog.write(line)
     rewards = reinforce.sumRewards
+    if rewards:
+        fig, axes = plt.subplots(3, 1, figsize=(8, 10), sharex=True)
+        axes[0].plot(rewardHistory)
+        axes[0].set_ylabel("Reward")
+        axes[0].set_title("Reward")
+        axes[1].plot(levelHistory)
+        axes[1].set_ylabel("Level")
+        axes[1].set_title("Level")
+        axes[2].plot(nodeHistory)
+        axes[2].set_ylabel("Nodes")
+        axes[2].set_title("Nodes")
+        axes[2].set_xlabel("Episode")
+        fig.tight_layout()
+        plotPath = "./results/" + ben + ".png"
+        fig.savefig(plotPath)
+        plt.close(fig)
+    if bestActions is not None:
+        print("best action sequence", bestActions)
     """
     with open('./results/sum_rewards.csv', 'a') as rewardLog:
         line = ""
@@ -103,6 +135,10 @@ if __name__ == "__main__":
     # testReinforce("./bench/ISCAS/blif/c6288.blif", "c6288")
     # testReinforce("./bench/MCNC/Combinational/blif/apex1.blif", "apex1")
     # testReinforce("./bench/MCNC/Combinational/blif/bc0.blif", "bc0")
-    testReinforce("./bench/log2.aig", "i10")
+    testReinforce("./bench/i10.aig", "i10")
+    # testReinforce("./bench/log2.aig", "log2")
+    # testReinforce("./bench/hyp.aig", "hyp")
+    # testReinforce("./bench/div.aig", "div")
+    
     #testReinforce("./bench/ISCAS/blif/c1355.blif", "c1355")
     #testReinforce("./bench/ISCAS/blif/c7552.blif", "c7552")

@@ -4,7 +4,7 @@
 # @date 10/25/2019
 # @brief The environment classes
 #
-
+SEQLEN = 40.0
 import abc_py as abcPy
 import numpy as np
 import graphExtractor as GE
@@ -59,7 +59,7 @@ class EnvNaive2(object):
         self.resyn2()
         resyn2Stats = self._abc.aigStats()
         totalReward = self.statValue(initStats) - self.statValue(resyn2Stats)
-        self._rewardBaseline = totalReward / 20.0 # 18 is the length of compress2rs sequence
+        self._rewardBaseline = totalReward / SEQLEN # 18 is the length of compress2rs sequence
         print("baseline num AND ", resyn2Stats.numAnd, " total reward ", totalReward )
     def resyn2(self):
         self._abc.balance(l=False)
@@ -92,7 +92,7 @@ class EnvNaive2(object):
         nextState = self.state()
         reward = self.reward()
         done = False
-        if (self.lenSeq >= 20):
+        if (self.lenSeq >= SEQLEN):
             done = True
         return nextState,reward,done,0
     def takeAction(self, actionIdx):
@@ -177,7 +177,7 @@ class EnvNaive2(object):
         lastOneHotActs[self.lastAct] += 1/3
         stateArray = np.array([self._curStats.numAnd / self.initNumAnd, self._curStats.lev / self.initLev,
             self._lastStats.numAnd / self.initNumAnd, self._lastStats.lev / self.initLev])
-        stepArray = np.array([float(self.lenSeq) / 20.0])
+        stepArray = np.array([float(self.lenSeq) / SEQLEN])
         combined = np.concatenate((stateArray, lastOneHotActs, stepArray), axis=-1)
         #combined = np.expand_dims(combined, axis=0)
         #return stateArray.astype(np.float32)
@@ -233,7 +233,7 @@ class EnvGraph(object):
         self.resyn2()
         resyn2Stats = self._abc.aigStats()
         totalReward = self.statValue(initStats) - self.statValue(resyn2Stats)
-        self._rewardBaseline = totalReward / 20.0 # 18 is the length of compress2rs sequence
+        self._rewardBaseline = totalReward / SEQLEN # 18 is the length of compress2rs sequence
         print("baseline num AND ", resyn2Stats.numAnd, " total reward ", totalReward )
     def resyn2(self):
         self._abc.balance(l=False)
@@ -266,7 +266,7 @@ class EnvGraph(object):
         nextState = self.state()
         reward = self.reward()
         done = False
-        if (self.lenSeq >= 20):
+        if (self.lenSeq >= SEQLEN):
             done = True
         return nextState,reward,done,0
     def takeAction(self, actionIdx):
@@ -351,7 +351,7 @@ class EnvGraph(object):
         lastOneHotActs[self.lastAct] += 1/3
         stateArray = np.array([self._curStats.numAnd / self.initNumAnd, self._curStats.lev / self.initLev,
             self._lastStats.numAnd / self.initNumAnd, self._lastStats.lev / self.initLev])
-        stepArray = np.array([float(self.lenSeq) / 20.0])
+        stepArray = np.array([float(self.lenSeq) / SEQLEN])
         combined = np.concatenate((stateArray, lastOneHotActs, stepArray), axis=-1)
         #combined = np.expand_dims(combined, axis=0)
         #return stateArray.astype(np.float32)
@@ -420,7 +420,7 @@ class EnvGraphGPU(object):
 
         resyn2Stats = self._abc.aigStats()
         totalReward = self.statValue(initStats) - self.statValue(resyn2Stats)
-        self._rewardBaseline = totalReward / 20.0
+        self._rewardBaseline = totalReward / SEQLEN
         print("baseline num AND ", resyn2Stats.numAnd, " total reward ", totalReward)
 
     def _ensure_gpu(self):
@@ -488,7 +488,7 @@ class EnvGraphGPU(object):
         nextState = self.state()
         reward = self.reward()
         done = False
-        if self.lenSeq >= 20:
+        if self.lenSeq >= SEQLEN:
             done = True
         return nextState, reward, done, 0
 
@@ -506,9 +506,9 @@ class EnvGraphGPU(object):
         elif actionIdx == 2:
             self._gpu_command("grf -m")
         elif actionIdx == 3:
-            self._gpu_command("grw -z")
+            self._gpu_command("grw -l")
         elif actionIdx == 4:
-            self._gpu_command("grf -m -z")
+            self._abc.refactor(l=False, z=True) #rs
         elif actionIdx == 5:
             self._abc.end()
             return True
@@ -538,7 +538,7 @@ class EnvGraphGPU(object):
                 self._lastStats.lev / self.initLev,
             ]
         )
-        stepArray = np.array([float(self.lenSeq) / 20.0])
+        stepArray = np.array([float(self.lenSeq) / SEQLEN])
         combined = np.concatenate((stateArray, lastOneHotActs, stepArray), axis=-1)
         combined_torch = torch.from_numpy(combined.astype(np.float32)).float()
         graph = GE.extract_dgl_graph(self._abc)

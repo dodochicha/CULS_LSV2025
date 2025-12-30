@@ -108,7 +108,7 @@ int Abc_CommandGpuBalance(Abc_Frame_t * pAbc, int argc, char ** argv) {
 }
 
 int Abc_CommandGpuRewrite(Abc_Frame_t * pAbc, int argc, char ** argv) {
-    bool fUseZeros = false, fGPUDeduplicate = false;
+    bool fUseZeros = false, fGPUDeduplicate = false, fOptimizeLevel = false;
 
     CLI::App parser("Perform GPU AIG rewriting (DAC'22)");
     parser.add_flag("-z", fUseZeros, "if provided, allow zero gain replacement");
@@ -118,11 +118,13 @@ int Abc_CommandGpuRewrite(Abc_Frame_t * pAbc, int argc, char ** argv) {
             fGPUDeduplicate ? "GPU" : "CPU",
             "]"
         }));
+    parser.add_flag("-l", fOptimizeLevel, 
+        "if provided, optimize level instead of node count");
     
     if (!parseOptions(parser, argc, argv) || !checkGpuManState())
         return 1;
     
-    getGpuMan()->rewrite(fUseZeros, fGPUDeduplicate);
+    getGpuMan()->rewrite(fUseZeros, fGPUDeduplicate, fOptimizeLevel);
     return 0;
 }
 
@@ -172,10 +174,13 @@ int Abc_CommandGpuResyn2(Abc_Frame_t * pAbc, int argc, char ** argv) {
     // rw -z -d; rw -z -d; b -s
 
     int cutSize = 12;
+    bool fOptimizeLevel = false;
 
     CLI::App parser("Perform GPU resyn2");
     parser.add_option("-K", cutSize, 
         descWithDefault("maximum cut size used in refactoring", cutSize));
+    parser.add_flag("-l", fOptimizeLevel, 
+        "if provided, optimize level instead of node count for rewrite operations");
     
     if (!parseOptions(parser, argc, argv) || !checkGpuManState())
         return 1;
@@ -183,18 +188,18 @@ int Abc_CommandGpuResyn2(Abc_Frame_t * pAbc, int argc, char ** argv) {
     AIGMan * pMan = getGpuMan();
     
     pMan->balance(1);
-    pMan->rewrite(false, true);
+    pMan->rewrite(false, true, fOptimizeLevel);
     pMan->refactor(true, false, cutSize);
     pMan->strash(false, true);
     pMan->balance(1);
-    pMan->rewrite(false, true);
-    pMan->rewrite(true, true);
-    pMan->rewrite(true, true);
+    pMan->rewrite(false, true, fOptimizeLevel);
+    pMan->rewrite(true, true, fOptimizeLevel);
+    pMan->rewrite(true, true, fOptimizeLevel);
     pMan->balance(0);
     pMan->refactor(true, true, cutSize);
     pMan->strash(false, true);
-    pMan->rewrite(true, true);
-    pMan->rewrite(true, true);
+    pMan->rewrite(true, true, fOptimizeLevel);
+    pMan->rewrite(true, true, fOptimizeLevel);
     pMan->balance(0);
 
     return 0;

@@ -10,6 +10,7 @@ import torch
 from torch import nn
 import torch.nn.functional as F
 from torch.distributions import Categorical
+from env import SEQLEN
 import bisect
 import random
 from dgl.nn.pytorch import GraphConv
@@ -229,6 +230,8 @@ class Reinforce(object):
         self.memTrajectory = [] # the memorized trajectories. sorted by value
         self.memLength = 4
         self.sumRewards = []
+        self.lastTrajectory = None
+        self.lastSumReward = None
     def genTrajectory(self, phaseTrain=True):
         self._env.reset()
         state = self._env.state()
@@ -249,7 +252,7 @@ class Reinforce(object):
             rewards.append(nextReward)
             actions.append(action)
             state = nextState
-            if len(states) > 20:
+            if len(states) > SEQLEN - 1:
                 term = True
         return Trajectory(states, rewards, actions, self._env.curStatsValue())
     def episode(self, phaseTrain=True):
@@ -278,8 +281,11 @@ class Reinforce(object):
             """
             self._baseline.update(state[0], G)
             self._pi.update(state[0], state[1], action, self._gamma ** tIdx, delta)
-        self.sumRewards.append(sum(rewards))
-        print(sum(rewards))
+        totalReward = sum(rewards)
+        self.sumRewards.append(totalReward)
+        self.lastTrajectory = trajectory
+        self.lastSumReward = totalReward
+        print(totalReward)
 
     def replay(self):
         for idx in range(min(self.memLength, int(len(self.memTrajectory) / 10))):
