@@ -454,15 +454,19 @@ class EnvGraphGPU(object):
 
     def resyn2(self):
         self._gpu_command("gb")
-        self._gpu_command("grw")
+        self._gpu_command("grw -d -l")
         self._gpu_command("grf -m")
+        self._gpu_command("gst")
         self._gpu_command("gb")
-        self._gpu_command("grw")
-        self._gpu_command("grw -z")
-        self._gpu_command("gb")
+        self._gpu_command("grw -d -l")
+        self._gpu_command("grw -z -d -l")
+        self._gpu_command("grw -z -d -l")
+        self._gpu_command("gb -s")
         self._gpu_command("grf -m -z")
-        self._gpu_command("grw -z")
-        self._gpu_command("gb")
+        self._gpu_command("gst")
+        self._gpu_command("grw -z -d -l")
+        self._gpu_command("grw -z -d -l")
+        self._gpu_command("gb -s")
 
     def reset(self):
         self.lenSeq = 0
@@ -502,14 +506,18 @@ class EnvGraphGPU(object):
         if actionIdx == 0:
             self._gpu_command("gb")
         elif actionIdx == 1:
-            self._gpu_command("grw")
+            self._gpu_command("gb -s")
         elif actionIdx == 2:
             self._gpu_command("grf -m")
         elif actionIdx == 3:
-            self._gpu_command("grw -l")
+            self._gpu_command("gst")
         elif actionIdx == 4:
-            self._abc.refactor(l=False, z=True) #rs
+            self._gpu_command("grw -d -l")
         elif actionIdx == 5:
+            self._gpu_command("grw -z -d -l")
+        elif actionIdx == 6:
+            self._gpu_command("grf -m -z")
+        elif actionIdx == 7:
             self._abc.end()
             return True
         else:
@@ -545,12 +553,12 @@ class EnvGraphGPU(object):
         return (combined_torch, graph)
 
     def reward(self):
-        if self.lastAct == 5:  # term
+        if self.lastAct == 7:  # term
             return 0
         return self.statValue(self._lastStats) - self.statValue(self._curStats) - self._rewardBaseline
 
     def numActions(self):
-        return 5
+        return 7
 
     def dimState(self):
         return 4 + self.numActions() * 1 + 1
