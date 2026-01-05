@@ -6,7 +6,9 @@
 #
 
 from datetime import datetime
+import time
 import os
+import warnings
 
 import reinforce as RF
 # from env import EnvGraph as Env
@@ -46,13 +48,34 @@ def testReinforce(filename, ben):
     rewardHistory = []
     nodeHistory = []
     levelHistory = []
+    episodeTimeHistory = []
+    stepTimeHistory = []
+    seqLenHistory = []
 
     for idx in range(200):
-        returns = reinforce.episode(phaseTrain=True)
+        t0 = time.perf_counter()
+        try:
+            returns = reinforce.episode(phaseTrain=True)
+        except Exception as exc:
+            warnings.warn(
+                f"abc error at iter {idx}: {exc}. continuing.",
+                RuntimeWarning,
+            )
+            continue
+        if returns is None or len(returns) < 2:
+            warnings.warn(
+                f"abc returned invalid result at iter {idx}: {returns}. continuing.",
+                RuntimeWarning,
+            )
+            continue
+        t1 = time.perf_counter()
         seqLen = reinforce.lenSeq
+        episodeTime = t1 - t0
+        stepTime = episodeTime / seqLen if seqLen else 0.0
         line = "iter " + str(idx) + " returns "+ str(returns) + " seq Length " + str(seqLen) + "\n"
         if idx >= 0:
             lastfive.append(AbcReturn(returns))
+        line = line.strip() + " episodeTime " + f"{episodeTime:.6f}" + " stepTime " + f"{stepTime:.6f}" + "\n"
         print(line)
         if reinforce.lastSumReward is not None:
             if bestReward is None or reinforce.lastSumReward > bestReward:
@@ -62,6 +85,9 @@ def testReinforce(filename, ben):
             rewardHistory.append(reinforce.lastSumReward)
         nodeHistory.append(returns[0])
         levelHistory.append(returns[1])
+        episodeTimeHistory.append(episodeTime)
+        stepTimeHistory.append(stepTime)
+        seqLenHistory.append(seqLen)
         #reinforce.replay()
     resultName = "./results/" + ben + ".csv"
     #lastfive.sort(key=lambda x : x.level)
@@ -92,6 +118,15 @@ def testReinforce(filename, ben):
         plt.close(fig)
     if bestActions is not None:
         print("best action sequence", bestActions)
+    if episodeTimeHistory:
+        avgEpisodeTime = statistics.mean(episodeTimeHistory)
+        avgStepTime = statistics.mean(stepTimeHistory)
+        avgSeqLen = statistics.mean(seqLenHistory) if seqLenHistory else 0.0
+        with open("timing.txt", "a") as timingLog:
+            timingLine = (
+                f"{ben} {avgSeqLen:.3f} {avgEpisodeTime:.6f} {avgStepTime:.6f}\n"
+            )
+            timingLog.write(timingLine)
     """
     with open('./results/sum_rewards.csv', 'a') as rewardLog:
         line = ""
@@ -135,8 +170,16 @@ if __name__ == "__main__":
     # testReinforce("./bench/ISCAS/blif/c6288.blif", "c6288")
     # testReinforce("./bench/MCNC/Combinational/blif/apex1.blif", "apex1")
     # testReinforce("./bench/MCNC/Combinational/blif/bc0.blif", "bc0")
-    testReinforce("./bench/i10.aig", "i10")
+    # testReinforce("./bench/i10.aig", "i10")
+    # testReinforce("./bench/apex1.aig", "apex1")
+    # testReinforce("./bench/bc0.aig", "bc0")
+    # testReinforce("./bench/C1355.aig", "C1355")
+    testReinforce("./bench/C5315.aig", "C5315")
+    # testReinforce("./bench/k2.aig", "k2")
+    # testReinforce("./bench/C7552.aig", "C7552")
+    # testReinforce("./bench/dalu.aig", "dalu")
     # testReinforce("./bench/log2.aig", "log2")
+    # testReinforce("./bench/mainpla.aig", "mainpla")
     # testReinforce("./bench/hyp.aig", "hyp")
     # testReinforce("./bench/div.aig", "div")
     

@@ -109141,3 +109141,2616 @@ rewrite: after rewrite, nNodes = 211503
 rewrite: alg time 1.55, full time 1.58
 
 *****Perform Rewrite*****
+
+*****Perform Balance*****
+Phase 1 time: 1.010701
+Max cover len: 4
+Total number of covers: 206197
+*** Max Level: 24800
+Reconstruct complete! #reconstructed covers = 206197
+#nodes = 214335
+Phase 2 time: 4.005156
+Total time: 5.016104
+balance: alg time 5.02, full time 5.02
+
+*****Perform Rewrite*****
+rewrite: optimize level activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3892.00 MB, free = 20367.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.84 MB
+GPU memory usage: used = 3938.00 MB, free = 20321.69 MB, total = 24259.69 MB
+[11.335] Rewrite Iteration
+0 in EvaluateNode 
+[12.833] Finished GPU enumeration and pre-evaluation
+[12.835] Replacing sub-graphs
+0 after replace 
+N = 217112   n = 214591   n * RATIO = 493559
+before rebuild, nn = 214591
+after rebuild, n = 217110
+successfully replaced 1277 cones (pos 1277, zero 0), reverted 2 cones, compromised 1 cones, pre-eval rejected 213055 cones, small cut reject 0 cones, new idx reject 0 cones
+after replace, n = 217110
+[12.839] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[12.844] Rewrite Iteration Ends
+real reduction: 1279
+** Total Time breakdown: ENUM 1.48, EVAL 0.01, REPLACE 0.01, REORDER 0.01, REDUNDANCY 0.00
+** Replace Time breakdown: COPYBACK 0.00, REID 0.00, CHOICE 0.00
+** CPU sequential time: 0.01 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 217110
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 213056
+rewrite: alg time 1.52, full time 2.88
+
+*****Perform Refactor*****
+refactor: perform MFFC covering algorithm
+Refactor: setting cudaLimitStackSize = 65536
+Refactor: checked cudaLimitStackSize = 65536
+refactor: execute with maximum cut size = 12...
+Gathered 128 POs
+Total number of cones to be resyned: 51533
+Truth table computation time: 0.01 sec
+ISOP + factor time: 0.00 sec
+Insertion complete, idCounter = 214092
+Start reordering ...
+Reordered network new nObjs: 213259, original nObjs: 213313
+Reordering complete!
+ ** CPU sequential time: 0.00 sec
+Sequential reorder time: 0.01 secs
+
+*****Perform Strash*****
+
+*****Perform Balance*****
+Phase 1 time: 1.019879
+Max cover len: 4
+Total number of covers: 204975
+*** Max Level: 24789
+Reconstruct complete! #reconstructed covers = 204975
+#nodes = 213002
+Phase 2 time: 4.010028
+Total time: 5.030042
+balance: alg time 5.03, full time 5.03
+
+*****Perform Rewrite*****
+rewrite: optimize level activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3892.00 MB, free = 20367.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.56 MB
+GPU memory usage: used = 3938.00 MB, free = 20321.69 MB, total = 24259.69 MB
+[20.648] Rewrite Iteration
+0 in EvaluateNode 
+[22.161] Finished GPU enumeration and pre-evaluation
+[22.164] Replacing sub-graphs
+0 after replace 
+N = 213258   n = 213258   n * RATIO = 490493
+before rebuild, nn = 213258
+after rebuild, n = 213258
+successfully replaced 2 cones (pos 2, zero 0), reverted 0 cones, compromised 0 cones, pre-eval rejected 213000 cones, small cut reject 0 cones, new idx reject 0 cones
+after replace, n = 213258
+[22.168] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[22.172] Rewrite Iteration Ends
+real reduction: 2
+** Total Time breakdown: ENUM 2.98, EVAL 0.02, REPLACE 0.01, REORDER 0.01, REDUNDANCY 0.00
+** Replace Time breakdown: COPYBACK 0.00, REID 0.00, CHOICE 0.00
+** CPU sequential time: 0.01 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 213258
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 213000
+rewrite: alg time 1.54, full time 2.89
+
+*****Perform Rewrite*****
+rewrite: use zeros activated!
+rewrite: optimize level activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3892.00 MB, free = 20367.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.56 MB
+GPU memory usage: used = 3938.00 MB, free = 20321.69 MB, total = 24259.69 MB
+[23.542] Rewrite Iteration
+0 in EvaluateNode 
+[25.054] Finished GPU enumeration and pre-evaluation
+[25.057] Replacing sub-graphs
+0 after replace 
+N = 264217   n = 213256   n * RATIO = 490488
+before rebuild, nn = 213256
+after rebuild, n = 263940
+successfully replaced 24857 cones (pos 4, zero 24853), reverted 193 cones, compromised 759 cones, pre-eval rejected 141973 cones, small cut reject 0 cones, new idx reject 45218 cones
+after replace, n = 263940
+[25.065] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[25.071] Rewrite Iteration Ends
+real reduction: 4
+** Total Time breakdown: ENUM 4.48, EVAL 0.03, REPLACE 0.02, REORDER 0.02, REDUNDANCY 0.00
+** Replace Time breakdown: COPYBACK 0.01, REID 0.00, CHOICE 0.00
+** CPU sequential time: 0.01 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 263940
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 212996
+rewrite: alg time 1.54, full time 2.89
+
+*****Perform Rewrite*****
+rewrite: use zeros activated!
+rewrite: optimize level activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3892.00 MB, free = 20367.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.56 MB
+GPU memory usage: used = 3938.00 MB, free = 20321.69 MB, total = 24259.69 MB
+[26.436] Rewrite Iteration
+0 in EvaluateNode 
+[27.951] Finished GPU enumeration and pre-evaluation
+[27.954] Replacing sub-graphs
+0 after replace 
+N = 262078   n = 213252   n * RATIO = 490479
+before rebuild, nn = 213252
+after rebuild, n = 261339
+successfully replaced 25309 cones (pos 30, zero 25279), reverted 82 cones, compromised 343 cones, pre-eval rejected 143420 cones, small cut reject 0 cones, new idx reject 43842 cones
+after replace, n = 261339
+[27.960] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[27.967] Rewrite Iteration Ends
+real reduction: 32
+** Total Time breakdown: ENUM 5.98, EVAL 0.05, REPLACE 0.03, REORDER 0.03, REDUNDANCY 0.00
+** Replace Time breakdown: COPYBACK 0.01, REID 0.00, CHOICE 0.01
+** CPU sequential time: 0.02 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 261339
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 212964
+rewrite: alg time 1.54, full time 2.90
+
+*****Perform Balance*****
+Phase 1 time: 1.011423
+Max cover len: 3
+Total number of covers: 204808
+*** Max Level: 24676
+Reconstruct complete! #reconstructed covers = 204808
+#nodes = 212964
+Phase 2 time: 4.910647
+Total time: 5.922213
+balance: alg time 5.92, full time 5.92
+
+*****Perform Refactor*****
+refactor: use zeros activated!
+refactor: perform MFFC covering algorithm
+Refactor: setting cudaLimitStackSize = 65536
+Refactor: checked cudaLimitStackSize = 65536
+refactor: execute with maximum cut size = 12...
+Gathered 128 POs
+Total number of cones to be resyned: 51074
+Truth table computation time: 0.01 sec
+ISOP + factor time: 0.00 sec
+Insertion complete, idCounter = 214484
+Start reordering ...
+Reordered network new nObjs: 213221, original nObjs: 213221
+Reordering complete!
+ ** CPU sequential time: 0.00 sec
+Sequential reorder time: 0.01 secs
+
+*****Perform Strash*****
+
+*****Perform Rewrite*****
+rewrite: use zeros activated!
+rewrite: optimize level activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3892.00 MB, free = 20367.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.55 MB
+GPU memory usage: used = 3938.00 MB, free = 20321.69 MB, total = 24259.69 MB
+[36.656] Rewrite Iteration
+0 in EvaluateNode 
+[38.155] Finished GPU enumeration and pre-evaluation
+[38.158] Replacing sub-graphs
+0 after replace 
+N = 260634   n = 213220   n * RATIO = 490405
+before rebuild, nn = 213220
+after rebuild, n = 259199
+successfully replaced 25480 cones (pos 9, zero 25471), reverted 150 cones, compromised 215 cones, pre-eval rejected 140680 cones, small cut reject 0 cones, new idx reject 46439 cones
+after replace, n = 259199
+[38.164] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[38.171] Rewrite Iteration Ends
+real reduction: 9
+** Total Time breakdown: ENUM 7.47, EVAL 0.06, REPLACE 0.04, REORDER 0.04, REDUNDANCY 0.01
+** Replace Time breakdown: COPYBACK 0.01, REID 0.01, CHOICE 0.01
+** CPU sequential time: 0.02 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 259199
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 212955
+rewrite: alg time 1.53, full time 2.87
+
+*****Perform Rewrite*****
+rewrite: use zeros activated!
+rewrite: optimize level activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3892.00 MB, free = 20367.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.55 MB
+GPU memory usage: used = 3938.00 MB, free = 20321.69 MB, total = 24259.69 MB
+[39.526] Rewrite Iteration
+0 in EvaluateNode 
+[41.031] Finished GPU enumeration and pre-evaluation
+[41.034] Replacing sub-graphs
+0 after replace 
+N = 258248   n = 213211   n * RATIO = 490385
+before rebuild, nn = 213211
+after rebuild, n = 257244
+successfully replaced 24456 cones (pos 2, zero 24454), reverted 88 cones, compromised 338 cones, pre-eval rejected 142495 cones, small cut reject 0 cones, new idx reject 45578 cones
+after replace, n = 257244
+[41.040] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[41.046] Rewrite Iteration Ends
+real reduction: 4
+** Total Time breakdown: ENUM 8.96, EVAL 0.07, REPLACE 0.05, REORDER 0.04, REDUNDANCY 0.01
+** Replace Time breakdown: COPYBACK 0.01, REID 0.01, CHOICE 0.01
+** CPU sequential time: 0.02 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 257244
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 212951
+rewrite: alg time 1.53, full time 2.88
+
+*****Perform Balance*****
+Phase 1 time: 1.023595
+Max cover len: 4
+Total number of covers: 204758
+*** Max Level: 24671
+Reconstruct complete! #reconstructed covers = 204758
+#nodes = 212951
+Phase 2 time: 4.909433
+Total time: 5.933132
+balance: alg time 5.93, full time 5.93
+
+*****Perform Balance*****
+Phase 1 time: 1.032181
+Max cover len: 4
+Total number of covers: 204758
+*** Max Level: 24671
+Reconstruct complete! #reconstructed covers = 204758
+#nodes = 212951
+Phase 2 time: 3.996564
+Total time: 5.028868
+balance: alg time 5.03, full time 5.03
+
+*****Perform Rewrite*****
+rewrite: optimize level activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3892.00 MB, free = 20367.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.55 MB
+GPU memory usage: used = 3938.00 MB, free = 20321.69 MB, total = 24259.69 MB
+[53.373] Rewrite Iteration
+0 in EvaluateNode 
+[54.880] Finished GPU enumeration and pre-evaluation
+[54.884] Replacing sub-graphs
+0 after replace 
+N = 213347   n = 213207   n * RATIO = 490376
+before rebuild, nn = 213207
+after rebuild, n = 213302
+successfully replaced 48 cones (pos 48, zero 0), reverted 46 cones, compromised 25 cones, pre-eval rejected 212832 cones, small cut reject 0 cones, new idx reject 0 cones
+after replace, n = 213302
+[54.888] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[54.892] Rewrite Iteration Ends
+real reduction: 93
+** Total Time breakdown: ENUM 10.45, EVAL 0.08, REPLACE 0.06, REORDER 0.05, REDUNDANCY 0.01
+** Replace Time breakdown: COPYBACK 0.01, REID 0.01, CHOICE 0.01
+** CPU sequential time: 0.02 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 213302
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 212858
+rewrite: alg time 1.53, full time 2.88
+
+*****Perform Refactor*****
+refactor: perform MFFC covering algorithm
+Refactor: setting cudaLimitStackSize = 65536
+Refactor: checked cudaLimitStackSize = 65536
+refactor: execute with maximum cut size = 12...
+Gathered 128 POs
+Total number of cones to be resyned: 51048
+Truth table computation time: 0.01 sec
+ISOP + factor time: 0.00 sec
+Insertion complete, idCounter = 214500
+Start reordering ...
+Reordered network new nObjs: 213115, original nObjs: 213115
+Reordering complete!
+ ** CPU sequential time: 0.00 sec
+Sequential reorder time: 0.01 secs
+
+*****Perform Strash*****
+
+*****Perform Balance*****
+Phase 1 time: 1.017824
+Max cover len: 4
+Total number of covers: 204688
+*** Max Level: 24671
+Reconstruct complete! #reconstructed covers = 204688
+#nodes = 212858
+Phase 2 time: 4.001698
+Total time: 5.019667
+balance: alg time 5.02, full time 5.02
+
+*****Perform Rewrite*****
+rewrite: optimize level activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3892.00 MB, free = 20367.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.53 MB
+GPU memory usage: used = 3938.00 MB, free = 20321.69 MB, total = 24259.69 MB
+[62.661] Rewrite Iteration
+0 in EvaluateNode 
+[64.160] Finished GPU enumeration and pre-evaluation
+[64.163] Replacing sub-graphs
+0 after replace 
+N = 213144   n = 213114   n * RATIO = 490162
+before rebuild, nn = 213114
+after rebuild, n = 213144
+successfully replaced 28 cones (pos 28, zero 0), reverted 25 cones, compromised 0 cones, pre-eval rejected 212805 cones, small cut reject 0 cones, new idx reject 0 cones
+after replace, n = 213144
+[64.167] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[64.172] Rewrite Iteration Ends
+real reduction: 28
+** Total Time breakdown: ENUM 11.94, EVAL 0.09, REPLACE 0.07, REORDER 0.06, REDUNDANCY 0.01
+** Replace Time breakdown: COPYBACK 0.01, REID 0.01, CHOICE 0.01
+** CPU sequential time: 0.02 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 213144
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 212830
+rewrite: alg time 1.52, full time 2.87
+
+*****Perform Rewrite*****
+rewrite: use zeros activated!
+rewrite: optimize level activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3892.00 MB, free = 20367.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.52 MB
+GPU memory usage: used = 3938.00 MB, free = 20321.69 MB, total = 24259.69 MB
+[65.530] Rewrite Iteration
+0 in EvaluateNode 
+[67.024] Finished GPU enumeration and pre-evaluation
+[67.027] Replacing sub-graphs
+0 after replace 
+N = 257355   n = 213086   n * RATIO = 490097
+before rebuild, nn = 213086
+after rebuild, n = 255978
+successfully replaced 24289 cones (pos 8, zero 24281), reverted 139 cones, compromised 290 cones, pre-eval rejected 140582 cones, small cut reject 0 cones, new idx reject 47530 cones
+after replace, n = 255978
+[67.034] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[67.040] Rewrite Iteration Ends
+real reduction: 8
+** Total Time breakdown: ENUM 13.42, EVAL 0.10, REPLACE 0.08, REORDER 0.07, REDUNDANCY 0.01
+** Replace Time breakdown: COPYBACK 0.02, REID 0.01, CHOICE 0.01
+** CPU sequential time: 0.03 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 255978
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 212822
+rewrite: alg time 1.52, full time 2.87
+
+*****Perform Rewrite*****
+rewrite: use zeros activated!
+rewrite: optimize level activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3892.00 MB, free = 20367.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.52 MB
+GPU memory usage: used = 3938.00 MB, free = 20321.69 MB, total = 24259.69 MB
+[68.396] Rewrite Iteration
+0 in EvaluateNode 
+[69.898] Finished GPU enumeration and pre-evaluation
+[69.901] Replacing sub-graphs
+0 after replace 
+N = 254859   n = 213078   n * RATIO = 490079
+before rebuild, nn = 213078
+after rebuild, n = 253848
+successfully replaced 23324 cones (pos 11, zero 23313), reverted 96 cones, compromised 346 cones, pre-eval rejected 142459 cones, small cut reject 0 cones, new idx reject 46597 cones
+after replace, n = 253848
+[69.907] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[69.913] Rewrite Iteration Ends
+real reduction: 11
+** Total Time breakdown: ENUM 14.91, EVAL 0.12, REPLACE 0.09, REORDER 0.07, REDUNDANCY 0.01
+** Replace Time breakdown: COPYBACK 0.02, REID 0.01, CHOICE 0.02
+** CPU sequential time: 0.03 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 253848
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 212811
+rewrite: alg time 1.53, full time 2.87
+
+*****Perform Balance*****
+Phase 1 time: 1.013548
+Max cover len: 4
+Total number of covers: 204625
+*** Max Level: 24671
+Reconstruct complete! #reconstructed covers = 204625
+#nodes = 212811
+Phase 2 time: 4.908034
+Total time: 5.921698
+balance: alg time 5.92, full time 5.92
+
+*****Perform Refactor*****
+refactor: use zeros activated!
+refactor: perform MFFC covering algorithm
+Refactor: setting cudaLimitStackSize = 65536
+Refactor: checked cudaLimitStackSize = 65536
+refactor: execute with maximum cut size = 12...
+Gathered 128 POs
+Total number of cones to be resyned: 51022
+Truth table computation time: 0.01 sec
+ISOP + factor time: 0.00 sec
+Insertion complete, idCounter = 214243
+Start reordering ...
+Reordered network new nObjs: 213068, original nObjs: 213068
+Reordering complete!
+ ** CPU sequential time: 0.00 sec
+Sequential reorder time: 0.01 secs
+
+*****Perform Strash*****
+
+*****Perform Rewrite*****
+rewrite: use zeros activated!
+rewrite: optimize level activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3892.00 MB, free = 20367.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.52 MB
+GPU memory usage: used = 3938.00 MB, free = 20321.69 MB, total = 24259.69 MB
+[78.577] Rewrite Iteration
+0 in EvaluateNode 
+[80.077] Finished GPU enumeration and pre-evaluation
+[80.080] Replacing sub-graphs
+0 after replace 
+N = 254618   n = 213067   n * RATIO = 490054
+before rebuild, nn = 213067
+after rebuild, n = 253177
+successfully replaced 23454 cones (pos 7, zero 23447), reverted 147 cones, compromised 222 cones, pre-eval rejected 140547 cones, small cut reject 0 cones, new idx reject 48441 cones
+after replace, n = 253177
+[80.086] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[80.092] Rewrite Iteration Ends
+real reduction: 7
+** Total Time breakdown: ENUM 16.39, EVAL 0.13, REPLACE 0.09, REORDER 0.08, REDUNDANCY 0.01
+** Replace Time breakdown: COPYBACK 0.02, REID 0.01, CHOICE 0.02
+** CPU sequential time: 0.03 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 253177
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 212804
+rewrite: alg time 1.53, full time 2.87
+
+*****Perform Rewrite*****
+rewrite: use zeros activated!
+rewrite: optimize level activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3892.00 MB, free = 20367.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.51 MB
+GPU memory usage: used = 3938.00 MB, free = 20321.69 MB, total = 24259.69 MB
+[81.448] Rewrite Iteration
+0 in EvaluateNode 
+[82.955] Finished GPU enumeration and pre-evaluation
+[82.958] Replacing sub-graphs
+0 after replace 
+N = 252408   n = 213060   n * RATIO = 490037
+before rebuild, nn = 213060
+after rebuild, n = 251388
+successfully replaced 22555 cones (pos 8, zero 22547), reverted 98 cones, compromised 271 cones, pre-eval rejected 142420 cones, small cut reject 0 cones, new idx reject 47460 cones
+after replace, n = 251388
+[82.964] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[82.970] Rewrite Iteration Ends
+real reduction: 9
+** Total Time breakdown: ENUM 17.89, EVAL 0.14, REPLACE 0.10, REORDER 0.09, REDUNDANCY 0.01
+** Replace Time breakdown: COPYBACK 0.02, REID 0.02, CHOICE 0.02
+** CPU sequential time: 0.04 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 251388
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 212795
+rewrite: alg time 1.53, full time 2.88
+
+*****Perform Balance*****
+Phase 1 time: 1.020665
+Max cover len: 4
+Total number of covers: 204627
+*** Max Level: 24671
+Reconstruct complete! #reconstructed covers = 204627
+#nodes = 212795
+Phase 2 time: 4.907590
+Total time: 5.928365
+balance: alg time 5.93, full time 5.93
+
+*****Perform Refactor*****
+refactor: use zeros activated!
+refactor: perform MFFC covering algorithm
+Refactor: setting cudaLimitStackSize = 65536
+Refactor: checked cudaLimitStackSize = 65536
+refactor: execute with maximum cut size = 12...
+Gathered 128 POs
+Total number of cones to be resyned: 52481
+Truth table computation time: 0.01 sec
+ISOP + factor time: 0.00 sec
+Insertion complete, idCounter = 219149
+Start reordering ...
+Reordered network new nObjs: 213300, original nObjs: 214592
+Reordering complete!
+ ** CPU sequential time: 0.00 sec
+Sequential reorder time: 0.01 secs
+
+*****Perform Rewrite*****
+rewrite: optimize level activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3892.00 MB, free = 20367.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.57 MB
+GPU memory usage: used = 3938.00 MB, free = 20321.69 MB, total = 24259.69 MB
+[102.927] Rewrite Iteration
+0 in EvaluateNode 
+[104.445] Finished GPU enumeration and pre-evaluation
+[104.449] Replacing sub-graphs
+0 after replace 
+N = 213358   n = 213299   n * RATIO = 490587
+before rebuild, nn = 213299
+after rebuild, n = 213358
+successfully replaced 41 cones (pos 41, zero 0), reverted 0 cones, compromised 0 cones, pre-eval rejected 213002 cones, small cut reject 0 cones, new idx reject 0 cones
+after replace, n = 213358
+[104.451] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[104.456] Rewrite Iteration Ends
+real reduction: 43
+** Total Time breakdown: ENUM 19.39, EVAL 0.15, REPLACE 0.11, REORDER 0.09, REDUNDANCY 0.02
+** Replace Time breakdown: COPYBACK 0.02, REID 0.02, CHOICE 0.02
+** CPU sequential time: 0.04 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 213358
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 213000
+rewrite: alg time 1.54, full time 2.89
+
+*****Perform Balance*****
+Phase 1 time: 1.039735
+Max cover len: 4
+Total number of covers: 204973
+*** Max Level: 24789
+Reconstruct complete! #reconstructed covers = 204973
+#nodes = 213000
+Phase 2 time: 4.025769
+Total time: 5.065810
+balance: alg time 5.07, full time 5.07
+
+*****Perform Rewrite*****
+rewrite: optimize level activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3892.00 MB, free = 20367.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.56 MB
+GPU memory usage: used = 3938.00 MB, free = 20321.69 MB, total = 24259.69 MB
+[119.106] Rewrite Iteration
+0 in EvaluateNode 
+[120.644] Finished GPU enumeration and pre-evaluation
+[120.647] Replacing sub-graphs
+0 after replace 
+N = 213256   n = 213256   n * RATIO = 490488
+before rebuild, nn = 213256
+after rebuild, n = 213256
+successfully replaced 0 cones (pos 0, zero 0), reverted 0 cones, compromised 0 cones, pre-eval rejected 213000 cones, small cut reject 0 cones, new idx reject 0 cones
+after replace, n = 213256
+[120.649] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[120.654] Rewrite Iteration Ends
+real reduction: 0
+** Total Time breakdown: ENUM 20.91, EVAL 0.16, REPLACE 0.12, REORDER 0.10, REDUNDANCY 0.02
+** Replace Time breakdown: COPYBACK 0.02, REID 0.02, CHOICE 0.02
+** CPU sequential time: 0.04 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 213256
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 213000
+rewrite: alg time 1.56, full time 2.92
+
+*****Perform Balance*****
+Phase 1 time: 1.023518
+Max cover len: 4
+Total number of covers: 204973
+*** Max Level: 24789
+Reconstruct complete! #reconstructed covers = 204973
+#nodes = 213000
+Phase 2 time: 4.952123
+Total time: 5.975781
+balance: alg time 5.98, full time 5.98
+
+*****Perform Rewrite*****
+rewrite: optimize level activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3892.00 MB, free = 20367.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.56 MB
+GPU memory usage: used = 3938.00 MB, free = 20321.69 MB, total = 24259.69 MB
+[135.782] Rewrite Iteration
+0 in EvaluateNode 
+[137.314] Finished GPU enumeration and pre-evaluation
+[137.317] Replacing sub-graphs
+0 after replace 
+N = 213256   n = 213256   n * RATIO = 490488
+before rebuild, nn = 213256
+after rebuild, n = 213256
+successfully replaced 0 cones (pos 0, zero 0), reverted 0 cones, compromised 0 cones, pre-eval rejected 213000 cones, small cut reject 0 cones, new idx reject 0 cones
+after replace, n = 213256
+[137.320] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[137.325] Rewrite Iteration Ends
+real reduction: 0
+** Total Time breakdown: ENUM 22.43, EVAL 0.18, REPLACE 0.12, REORDER 0.11, REDUNDANCY 0.02
+** Replace Time breakdown: COPYBACK 0.02, REID 0.02, CHOICE 0.02
+** CPU sequential time: 0.04 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 213256
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 213000
+rewrite: alg time 1.56, full time 2.91
+
+*****Perform Refactor*****
+refactor: use zeros activated!
+refactor: perform MFFC covering algorithm
+Refactor: setting cudaLimitStackSize = 65536
+Refactor: checked cudaLimitStackSize = 65536
+refactor: execute with maximum cut size = 12...
+Gathered 128 POs
+Total number of cones to be resyned: 51512
+Truth table computation time: 0.01 sec
+ISOP + factor time: 0.00 sec
+Insertion complete, idCounter = 213856
+Start reordering ...
+Reordered network new nObjs: 213257, original nObjs: 213257
+Reordering complete!
+ ** CPU sequential time: 0.00 sec
+Sequential reorder time: 0.01 secs
+
+*****Perform Balance*****
+Phase 1 time: 1.014261
+Max cover len: 4
+Total number of covers: 204901
+*** Max Level: 24786
+Reconstruct complete! #reconstructed covers = 204901
+#nodes = 213000
+Phase 2 time: 4.953554
+Total time: 5.967942
+balance: alg time 5.97, full time 5.97
+
+*****Perform Refactor*****
+refactor: perform MFFC covering algorithm
+Refactor: setting cudaLimitStackSize = 65536
+Refactor: checked cudaLimitStackSize = 65536
+refactor: execute with maximum cut size = 12...
+Gathered 128 POs
+Total number of cones to be resyned: 51514
+Truth table computation time: 0.01 sec
+ISOP + factor time: 0.00 sec
+Insertion complete, idCounter = 213843
+Start reordering ...
+Reordered network new nObjs: 213257, original nObjs: 213257
+Reordering complete!
+ ** CPU sequential time: 0.00 sec
+Sequential reorder time: 0.01 secs
+
+*****Perform Balance*****
+Phase 1 time: 1.037739
+Max cover len: 4
+Total number of covers: 204973
+*** Max Level: 24786
+Reconstruct complete! #reconstructed covers = 204973
+#nodes = 213000
+Phase 2 time: 4.028312
+Total time: 5.066204
+balance: alg time 5.07, full time 5.07
+
+*****Perform Strash*****
+
+*****Perform Refactor*****
+refactor: use zeros activated!
+refactor: perform MFFC covering algorithm
+Refactor: setting cudaLimitStackSize = 65536
+Refactor: checked cudaLimitStackSize = 65536
+refactor: execute with maximum cut size = 12...
+Gathered 128 POs
+Total number of cones to be resyned: 51514
+Truth table computation time: 0.01 sec
+ISOP + factor time: 0.00 sec
+Insertion complete, idCounter = 213843
+Start reordering ...
+Reordered network new nObjs: 213257, original nObjs: 213257
+Reordering complete!
+ ** CPU sequential time: 0.00 sec
+Sequential reorder time: 0.01 secs
+
+*****Perform Rewrite*****
+rewrite: optimize level activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3892.00 MB, free = 20367.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.56 MB
+GPU memory usage: used = 3938.00 MB, free = 20321.69 MB, total = 24259.69 MB
+[179.048] Rewrite Iteration
+0 in EvaluateNode 
+[180.564] Finished GPU enumeration and pre-evaluation
+[180.568] Replacing sub-graphs
+0 after replace 
+N = 213257   n = 213256   n * RATIO = 490488
+before rebuild, nn = 213256
+after rebuild, n = 213257
+successfully replaced 1 cones (pos 1, zero 0), reverted 0 cones, compromised 0 cones, pre-eval rejected 212999 cones, small cut reject 0 cones, new idx reject 0 cones
+after replace, n = 213257
+[180.571] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[180.575] Rewrite Iteration Ends
+real reduction: 1
+** Total Time breakdown: ENUM 23.93, EVAL 0.19, REPLACE 0.13, REORDER 0.11, REDUNDANCY 0.02
+** Replace Time breakdown: COPYBACK 0.02, REID 0.02, CHOICE 0.02
+** CPU sequential time: 0.04 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 213257
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 212999
+rewrite: alg time 1.54, full time 2.89
+
+*****Perform Rewrite*****
+rewrite: use zeros activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3892.00 MB, free = 20367.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.56 MB
+GPU memory usage: used = 3938.00 MB, free = 20321.69 MB, total = 24259.69 MB
+[185.857] Rewrite Iteration
+0 in EvaluateNode 
+[187.394] Finished GPU enumeration and pre-evaluation
+[187.398] Replacing sub-graphs
+0 after replace 
+N = 254853   n = 213255   n * RATIO = 490486
+before rebuild, nn = 213255
+after rebuild, n = 254828
+successfully replaced 22341 cones (pos 0, zero 22341), reverted 128 cones, compromised 198 cones, pre-eval rejected 141976 cones, small cut reject 0 cones, new idx reject 48356 cones
+after replace, n = 254828
+[187.403] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[187.409] Rewrite Iteration Ends
+real reduction: 0
+** Total Time breakdown: ENUM 25.45, EVAL 0.20, REPLACE 0.14, REORDER 0.12, REDUNDANCY 0.02
+** Replace Time breakdown: COPYBACK 0.03, REID 0.02, CHOICE 0.02
+** CPU sequential time: 0.05 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 254828
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 212999
+rewrite: alg time 1.57, full time 2.91
+
+*****Perform Rewrite*****
+rewrite: use zeros activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3892.00 MB, free = 20367.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.56 MB
+GPU memory usage: used = 3938.00 MB, free = 20321.69 MB, total = 24259.69 MB
+[192.619] Rewrite Iteration
+0 in EvaluateNode 
+[194.145] Finished GPU enumeration and pre-evaluation
+[194.149] Replacing sub-graphs
+0 after replace 
+N = 240910   n = 213255   n * RATIO = 490486
+before rebuild, nn = 213255
+after rebuild, n = 240818
+successfully replaced 18069 cones (pos 4, zero 18065), reverted 699 cones, compromised 58 cones, pre-eval rejected 138991 cones, small cut reject 0 cones, new idx reject 55182 cones
+after replace, n = 240818
+[194.154] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[194.159] Rewrite Iteration Ends
+real reduction: 4
+** Total Time breakdown: ENUM 26.97, EVAL 0.21, REPLACE 0.15, REORDER 0.13, REDUNDANCY 0.02
+** Replace Time breakdown: COPYBACK 0.03, REID 0.02, CHOICE 0.03
+** CPU sequential time: 0.05 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 240818
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 212995
+rewrite: alg time 1.56, full time 2.90
+
+*****Perform Balance*****
+Phase 1 time: 1.012870
+Max cover len: 3
+Total number of covers: 204779
+*** Max Level: 24672
+Reconstruct complete! #reconstructed covers = 204779
+#nodes = 212995
+Phase 2 time: 4.930852
+Total time: 5.943870
+balance: alg time 5.94, full time 5.95
+
+*****Perform Balance*****
+Phase 1 time: 1.012241
+Max cover len: 3
+Total number of covers: 204779
+*** Max Level: 24672
+Reconstruct complete! #reconstructed covers = 204779
+#nodes = 212995
+Phase 2 time: 3.999555
+Total time: 5.011951
+balance: alg time 5.01, full time 5.01
+
+*****Perform Strash*****
+
+*****Perform Refactor*****
+refactor: perform MFFC covering algorithm
+Refactor: setting cudaLimitStackSize = 65536
+Refactor: checked cudaLimitStackSize = 65536
+refactor: execute with maximum cut size = 12...
+Gathered 128 POs
+Total number of cones to be resyned: 46509
+Truth table computation time: 0.01 sec
+ISOP + factor time: 0.00 sec
+Insertion complete, idCounter = 215509
+Start reordering ...
+Reordered network new nObjs: 211798, original nObjs: 213252
+Reordering complete!
+ ** CPU sequential time: 0.00 sec
+Sequential reorder time: 0.01 secs
+
+*****Perform Balance*****
+Phase 1 time: 1.016060
+Max cover len: 3
+Total number of covers: 203397
+*** Max Level: 24673
+Reconstruct complete! #reconstructed covers = 203397
+#nodes = 211541
+Phase 2 time: 4.916752
+Total time: 5.932946
+balance: alg time 5.93, full time 5.94
+
+*****Perform Rewrite*****
+rewrite: optimize level activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3892.00 MB, free = 20367.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.24 MB
+GPU memory usage: used = 3938.00 MB, free = 20321.69 MB, total = 24259.69 MB
+[239.647] Rewrite Iteration
+0 in EvaluateNode 
+[241.178] Finished GPU enumeration and pre-evaluation
+[241.181] Replacing sub-graphs
+0 after replace 
+N = 211797   n = 211797   n * RATIO = 487133
+before rebuild, nn = 211797
+after rebuild, n = 211797
+successfully replaced 8 cones (pos 8, zero 0), reverted 0 cones, compromised 0 cones, pre-eval rejected 211533 cones, small cut reject 0 cones, new idx reject 0 cones
+after replace, n = 211797
+[241.184] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[241.188] Rewrite Iteration Ends
+real reduction: 8
+** Total Time breakdown: ENUM 28.48, EVAL 0.22, REPLACE 0.15, REORDER 0.13, REDUNDANCY 0.02
+** Replace Time breakdown: COPYBACK 0.03, REID 0.02, CHOICE 0.03
+** CPU sequential time: 0.05 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 211797
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 211533
+rewrite: alg time 1.55, full time 2.89
+
+*****Perform Refactor*****
+refactor: use zeros activated!
+refactor: perform MFFC covering algorithm
+Refactor: setting cudaLimitStackSize = 65536
+Refactor: checked cudaLimitStackSize = 65536
+refactor: execute with maximum cut size = 12...
+Gathered 128 POs
+Total number of cones to be resyned: 45794
+Truth table computation time: 0.01 sec
+ISOP + factor time: 0.00 sec
+Insertion complete, idCounter = 212556
+Start reordering ...
+Reordered network new nObjs: 211790, original nObjs: 211790
+Reordering complete!
+ ** CPU sequential time: 0.00 sec
+Sequential reorder time: 0.01 secs
+
+*****Perform Balance*****
+Phase 1 time: 0.998376
+Max cover len: 3
+Total number of covers: 203321
+*** Max Level: 24673
+Reconstruct complete! #reconstructed covers = 203321
+#nodes = 211533
+Phase 2 time: 4.004934
+Total time: 5.003474
+balance: alg time 5.00, full time 5.01
+
+*****Perform Strash*****
+
+*****Perform Refactor*****
+refactor: use zeros activated!
+refactor: perform MFFC covering algorithm
+Refactor: setting cudaLimitStackSize = 65536
+Refactor: checked cudaLimitStackSize = 65536
+refactor: execute with maximum cut size = 12...
+Gathered 128 POs
+Total number of cones to be resyned: 45794
+Truth table computation time: 0.01 sec
+ISOP + factor time: 0.00 sec
+Insertion complete, idCounter = 212556
+Start reordering ...
+Reordered network new nObjs: 211790, original nObjs: 211790
+Reordering complete!
+ ** CPU sequential time: 0.00 sec
+Sequential reorder time: 0.01 secs
+
+*****Perform Rewrite*****
+rewrite: optimize level activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3892.00 MB, free = 20367.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.24 MB
+GPU memory usage: used = 3938.00 MB, free = 20321.69 MB, total = 24259.69 MB
+[269.613] Rewrite Iteration
+0 in EvaluateNode 
+[271.116] Finished GPU enumeration and pre-evaluation
+[271.119] Replacing sub-graphs
+0 after replace 
+N = 211789   n = 211789   n * RATIO = 487114
+before rebuild, nn = 211789
+after rebuild, n = 211789
+successfully replaced 0 cones (pos 0, zero 0), reverted 0 cones, compromised 0 cones, pre-eval rejected 211533 cones, small cut reject 0 cones, new idx reject 0 cones
+after replace, n = 211789
+[271.121] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[271.126] Rewrite Iteration Ends
+real reduction: 0
+** Total Time breakdown: ENUM 29.97, EVAL 0.24, REPLACE 0.16, REORDER 0.14, REDUNDANCY 0.02
+** Replace Time breakdown: COPYBACK 0.03, REID 0.02, CHOICE 0.03
+** CPU sequential time: 0.05 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 211789
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 211533
+rewrite: alg time 1.53, full time 2.88
+
+*****Perform Balance*****
+Phase 1 time: 1.013610
+Max cover len: 3
+Total number of covers: 203389
+*** Max Level: 24673
+Reconstruct complete! #reconstructed covers = 203389
+#nodes = 211533
+Phase 2 time: 4.925912
+Total time: 5.939694
+balance: alg time 5.94, full time 5.94
+
+*****Perform Balance*****
+Phase 1 time: 1.025115
+Max cover len: 3
+Total number of covers: 203389
+*** Max Level: 24673
+Reconstruct complete! #reconstructed covers = 203389
+#nodes = 211533
+Phase 2 time: 3.996099
+Total time: 5.021350
+balance: alg time 5.02, full time 5.02
+
+*****Perform Rewrite*****
+rewrite: optimize level activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3892.00 MB, free = 20367.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.24 MB
+GPU memory usage: used = 3938.00 MB, free = 20321.69 MB, total = 24259.69 MB
+[296.424] Rewrite Iteration
+0 in EvaluateNode 
+[297.944] Finished GPU enumeration and pre-evaluation
+[297.947] Replacing sub-graphs
+0 after replace 
+N = 211789   n = 211789   n * RATIO = 487114
+before rebuild, nn = 211789
+after rebuild, n = 211789
+successfully replaced 0 cones (pos 0, zero 0), reverted 0 cones, compromised 0 cones, pre-eval rejected 211533 cones, small cut reject 0 cones, new idx reject 0 cones
+after replace, n = 211789
+[297.949] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[297.953] Rewrite Iteration Ends
+real reduction: 0
+** Total Time breakdown: ENUM 31.48, EVAL 0.25, REPLACE 0.16, REORDER 0.15, REDUNDANCY 0.02
+** Replace Time breakdown: COPYBACK 0.03, REID 0.02, CHOICE 0.03
+** CPU sequential time: 0.05 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 211789
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 211533
+rewrite: alg time 1.54, full time 2.88
+
+*****Perform Refactor*****
+refactor: perform MFFC covering algorithm
+Refactor: setting cudaLimitStackSize = 65536
+Refactor: checked cudaLimitStackSize = 65536
+refactor: execute with maximum cut size = 12...
+Gathered 128 POs
+Total number of cones to be resyned: 45794
+Truth table computation time: 0.01 sec
+ISOP + factor time: 0.00 sec
+Insertion complete, idCounter = 212556
+Start reordering ...
+Reordered network new nObjs: 211790, original nObjs: 211790
+Reordering complete!
+ ** CPU sequential time: 0.00 sec
+Sequential reorder time: 0.01 secs
+
+*****Perform Balance*****
+Phase 1 time: 1.001264
+Max cover len: 3
+Total number of covers: 203321
+*** Max Level: 24673
+Reconstruct complete! #reconstructed covers = 203321
+#nodes = 211533
+Phase 2 time: 3.999741
+Total time: 5.001147
+balance: alg time 5.00, full time 5.01
+
+*****Perform Rewrite*****
+rewrite: use zeros activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3892.00 MB, free = 20367.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.24 MB
+GPU memory usage: used = 3938.00 MB, free = 20321.69 MB, total = 24259.69 MB
+[317.276] Rewrite Iteration
+0 in EvaluateNode 
+[318.806] Finished GPU enumeration and pre-evaluation
+[318.809] Replacing sub-graphs
+0 after replace 
+N = 238062   n = 211789   n * RATIO = 487114
+before rebuild, nn = 211789
+after rebuild, n = 237399
+successfully replaced 15972 cones (pos 0, zero 15972), reverted 81 cones, compromised 306 cones, pre-eval rejected 142897 cones, small cut reject 0 cones, new idx reject 52277 cones
+after replace, n = 237399
+[318.814] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[318.819] Rewrite Iteration Ends
+real reduction: 0
+** Total Time breakdown: ENUM 32.99, EVAL 0.26, REPLACE 0.17, REORDER 0.15, REDUNDANCY 0.02
+** Replace Time breakdown: COPYBACK 0.03, REID 0.02, CHOICE 0.03
+** CPU sequential time: 0.06 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 237399
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 211533
+rewrite: alg time 1.56, full time 2.90
+
+*****Perform Balance*****
+Phase 1 time: 1.027860
+Max cover len: 3
+Total number of covers: 203332
+*** Max Level: 24669
+Reconstruct complete! #reconstructed covers = 203332
+#nodes = 211533
+Phase 2 time: 4.011471
+Total time: 5.039457
+balance: alg time 5.04, full time 5.04
+
+*****Perform Refactor*****
+refactor: use zeros activated!
+refactor: perform MFFC covering algorithm
+Refactor: setting cudaLimitStackSize = 65536
+Refactor: checked cudaLimitStackSize = 65536
+refactor: execute with maximum cut size = 12...
+Gathered 128 POs
+Total number of cones to be resyned: 52349
+Truth table computation time: 0.01 sec
+ISOP + factor time: 0.00 sec
+Insertion complete, idCounter = 212629
+Start reordering ...
+Reordered network new nObjs: 211790, original nObjs: 211790
+Reordering complete!
+ ** CPU sequential time: 0.00 sec
+Sequential reorder time: 0.01 secs
+
+*****Perform Refactor*****
+refactor: use zeros activated!
+refactor: perform MFFC covering algorithm
+Refactor: setting cudaLimitStackSize = 65536
+Refactor: checked cudaLimitStackSize = 65536
+refactor: execute with maximum cut size = 12...
+Gathered 128 POs
+Total number of cones to be resyned: 52349
+Truth table computation time: 0.01 sec
+ISOP + factor time: 0.00 sec
+Insertion complete, idCounter = 212287
+Start reordering ...
+Reordered network new nObjs: 211790, original nObjs: 211790
+Reordering complete!
+ ** CPU sequential time: 0.00 sec
+Sequential reorder time: 0.01 secs
+
+*****Perform Refactor*****
+refactor: use zeros activated!
+refactor: perform MFFC covering algorithm
+Refactor: setting cudaLimitStackSize = 65536
+Refactor: checked cudaLimitStackSize = 65536
+refactor: execute with maximum cut size = 12...
+Gathered 128 POs
+Total number of cones to be resyned: 52349
+Truth table computation time: 0.01 sec
+ISOP + factor time: 0.00 sec
+Insertion complete, idCounter = 212287
+Start reordering ...
+Reordered network new nObjs: 211790, original nObjs: 211790
+Reordering complete!
+ ** CPU sequential time: 0.00 sec
+Sequential reorder time: 0.01 secs
+
+*****Perform Rewrite*****
+rewrite: use zeros activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3892.00 MB, free = 20367.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.24 MB
+GPU memory usage: used = 3938.00 MB, free = 20321.69 MB, total = 24259.69 MB
+[344.804] Rewrite Iteration
+0 in EvaluateNode 
+[346.303] Finished GPU enumeration and pre-evaluation
+[346.306] Replacing sub-graphs
+0 after replace 
+N = 235249   n = 211789   n * RATIO = 487114
+before rebuild, nn = 211789
+after rebuild, n = 235126
+successfully replaced 13855 cones (pos 0, zero 13855), reverted 42 cones, compromised 66 cones, pre-eval rejected 141696 cones, small cut reject 0 cones, new idx reject 55874 cones
+after replace, n = 235126
+[346.311] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[346.316] Rewrite Iteration Ends
+real reduction: 0
+** Total Time breakdown: ENUM 34.48, EVAL 0.27, REPLACE 0.18, REORDER 0.16, REDUNDANCY 0.03
+** Replace Time breakdown: COPYBACK 0.03, REID 0.02, CHOICE 0.03
+** CPU sequential time: 0.06 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 235126
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 211533
+rewrite: alg time 1.53, full time 2.87
+
+*****Perform Balance*****
+Phase 1 time: 1.028905
+Max cover len: 3
+Total number of covers: 203382
+*** Max Level: 24670
+Reconstruct complete! #reconstructed covers = 203382
+#nodes = 211533
+Phase 2 time: 4.009738
+Total time: 5.038776
+balance: alg time 5.04, full time 5.04
+
+*****Perform Rewrite*****
+rewrite: use zeros activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3892.00 MB, free = 20367.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.24 MB
+GPU memory usage: used = 3938.00 MB, free = 20321.69 MB, total = 24259.69 MB
+[360.586] Rewrite Iteration
+0 in EvaluateNode 
+[362.126] Finished GPU enumeration and pre-evaluation
+[362.129] Replacing sub-graphs
+0 after replace 
+N = 242964   n = 211789   n * RATIO = 487114
+before rebuild, nn = 211789
+after rebuild, n = 242799
+successfully replaced 16489 cones (pos 1, zero 16488), reverted 2007 cones, compromised 44 cones, pre-eval rejected 143328 cones, small cut reject 0 cones, new idx reject 49665 cones
+after replace, n = 242799
+[362.134] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[362.140] Rewrite Iteration Ends
+real reduction: 1
+** Total Time breakdown: ENUM 36.00, EVAL 0.29, REPLACE 0.18, REORDER 0.17, REDUNDANCY 0.03
+** Replace Time breakdown: COPYBACK 0.03, REID 0.02, CHOICE 0.03
+** CPU sequential time: 0.07 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 242799
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 211532
+rewrite: alg time 1.57, full time 2.91
+
+*****Perform Balance*****
+Phase 1 time: 1.012863
+Max cover len: 3
+Total number of covers: 203388
+*** Max Level: 24669
+Reconstruct complete! #reconstructed covers = 203388
+#nodes = 211532
+Phase 2 time: 4.922597
+Total time: 5.935589
+balance: alg time 5.94, full time 5.94
+
+*****Perform Strash*****
+
+*****Perform Rewrite*****
+rewrite: optimize level activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 1842.00 MB, free = 22417.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.84 MB
+GPU memory usage: used = 1888.00 MB, free = 22371.69 MB, total = 24259.69 MB
+[456.278] Rewrite Iteration
+0 in EvaluateNode 
+[457.795] Finished GPU enumeration and pre-evaluation
+[457.799] Replacing sub-graphs
+0 after replace 
+N = 217100   n = 214591   n * RATIO = 493559
+before rebuild, nn = 214591
+after rebuild, n = 217100
+successfully replaced 1274 cones (pos 1274, zero 0), reverted 0 cones, compromised 0 cones, pre-eval rejected 213061 cones, small cut reject 0 cones, new idx reject 0 cones
+after replace, n = 217100
+[457.801] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[457.806] Rewrite Iteration Ends
+real reduction: 1276
+** Total Time breakdown: ENUM 37.51, EVAL 0.30, REPLACE 0.19, REORDER 0.18, REDUNDANCY 0.03
+** Replace Time breakdown: COPYBACK 0.03, REID 0.02, CHOICE 0.03
+** CPU sequential time: 0.07 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 217100
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 213059
+rewrite: alg time 1.54, full time 2.86
+
+*****Perform Balance*****
+Phase 1 time: 1.026678
+Max cover len: 4
+Total number of covers: 204943
+*** Max Level: 24800
+Reconstruct complete! #reconstructed covers = 204943
+#nodes = 213059
+Phase 2 time: 4.018182
+Total time: 5.045163
+balance: alg time 5.05, full time 5.05
+
+*****Perform Strash*****
+
+*****Perform Rewrite*****
+rewrite: use zeros activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3892.00 MB, free = 20367.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.57 MB
+GPU memory usage: used = 3938.00 MB, free = 20321.69 MB, total = 24259.69 MB
+[476.789] Rewrite Iteration
+0 in EvaluateNode 
+[478.325] Finished GPU enumeration and pre-evaluation
+[478.328] Replacing sub-graphs
+0 after replace 
+N = 255043   n = 213315   n * RATIO = 490624
+before rebuild, nn = 213315
+after rebuild, n = 255018
+successfully replaced 22406 cones (pos 13, zero 22393), reverted 148 cones, compromised 201 cones, pre-eval rejected 141950 cones, small cut reject 0 cones, new idx reject 48354 cones
+after replace, n = 255018
+[478.334] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[478.340] Rewrite Iteration Ends
+real reduction: 13
+** Total Time breakdown: ENUM 39.03, EVAL 0.31, REPLACE 0.20, REORDER 0.18, REDUNDANCY 0.03
+** Replace Time breakdown: COPYBACK 0.03, REID 0.02, CHOICE 0.04
+** CPU sequential time: 0.07 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 255018
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 213046
+rewrite: alg time 1.56, full time 2.91
+
+*****Perform Rewrite*****
+rewrite: use zeros activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3892.00 MB, free = 20367.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.57 MB
+GPU memory usage: used = 3938.00 MB, free = 20321.69 MB, total = 24259.69 MB
+[483.619] Rewrite Iteration
+0 in EvaluateNode 
+[485.144] Finished GPU enumeration and pre-evaluation
+[485.147] Replacing sub-graphs
+0 after replace 
+N = 241028   n = 213302   n * RATIO = 490594
+before rebuild, nn = 213302
+after rebuild, n = 240926
+successfully replaced 18130 cones (pos 4, zero 18126), reverted 697 cones, compromised 54 cones, pre-eval rejected 138850 cones, small cut reject 0 cones, new idx reject 55315 cones
+after replace, n = 240926
+[485.152] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[485.158] Rewrite Iteration Ends
+real reduction: 7
+** Total Time breakdown: ENUM 40.54, EVAL 0.32, REPLACE 0.21, REORDER 0.19, REDUNDANCY 0.03
+** Replace Time breakdown: COPYBACK 0.03, REID 0.03, CHOICE 0.04
+** CPU sequential time: 0.07 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 240926
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 213039
+rewrite: alg time 1.55, full time 2.90
+
+*****Perform Strash*****
+
+*****Perform Refactor*****
+refactor: use zeros activated!
+refactor: perform MFFC covering algorithm
+Refactor: setting cudaLimitStackSize = 65536
+Refactor: checked cudaLimitStackSize = 65536
+refactor: execute with maximum cut size = 12...
+Gathered 128 POs
+Total number of cones to be resyned: 46522
+Truth table computation time: 0.01 sec
+ISOP + factor time: 0.00 sec
+Insertion complete, idCounter = 215633
+Start reordering ...
+Reordered network new nObjs: 211820, original nObjs: 213296
+Reordering complete!
+ ** CPU sequential time: 0.00 sec
+Sequential reorder time: 0.01 secs
+
+*****Perform Refactor*****
+refactor: perform MFFC covering algorithm
+Refactor: setting cudaLimitStackSize = 65536
+Refactor: checked cudaLimitStackSize = 65536
+refactor: execute with maximum cut size = 12...
+Gathered 128 POs
+Total number of cones to be resyned: 45791
+Truth table computation time: 0.01 sec
+ISOP + factor time: 0.00 sec
+Insertion complete, idCounter = 212349
+Start reordering ...
+Reordered network new nObjs: 211820, original nObjs: 211820
+Reordering complete!
+ ** CPU sequential time: 0.00 sec
+Sequential reorder time: 0.01 secs
+
+*****Perform Rewrite*****
+rewrite: use zeros activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3892.00 MB, free = 20367.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.25 MB
+GPU memory usage: used = 3938.00 MB, free = 20321.69 MB, total = 24259.69 MB
+[503.490] Rewrite Iteration
+0 in EvaluateNode 
+[504.996] Finished GPU enumeration and pre-evaluation
+[504.999] Replacing sub-graphs
+0 after replace 
+N = 238123   n = 211819   n * RATIO = 487183
+before rebuild, nn = 211819
+after rebuild, n = 237412
+successfully replaced 15977 cones (pos 1, zero 15976), reverted 80 cones, compromised 301 cones, pre-eval rejected 143073 cones, small cut reject 0 cones, new idx reject 52132 cones
+after replace, n = 237412
+[505.003] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[505.009] Rewrite Iteration Ends
+real reduction: 1
+** Total Time breakdown: ENUM 42.03, EVAL 0.34, REPLACE 0.21, REORDER 0.20, REDUNDANCY 0.03
+** Replace Time breakdown: COPYBACK 0.04, REID 0.03, CHOICE 0.04
+** CPU sequential time: 0.08 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 237412
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 211562
+rewrite: alg time 1.53, full time 2.86
+
+*****Perform Balance*****
+Phase 1 time: 1.020682
+Max cover len: 3
+Total number of covers: 203372
+*** Max Level: 24672
+Reconstruct complete! #reconstructed covers = 203372
+#nodes = 211562
+Phase 2 time: 3.998198
+Total time: 5.019018
+balance: alg time 5.02, full time 5.02
+
+*****Perform Strash*****
+
+*****Perform Strash*****
+
+*****Perform Refactor*****
+refactor: use zeros activated!
+refactor: perform MFFC covering algorithm
+Refactor: setting cudaLimitStackSize = 65536
+Refactor: checked cudaLimitStackSize = 65536
+refactor: execute with maximum cut size = 12...
+Gathered 128 POs
+Total number of cones to be resyned: 52361
+Truth table computation time: 0.01 sec
+ISOP + factor time: 0.00 sec
+Insertion complete, idCounter = 212697
+Start reordering ...
+Reordered network new nObjs: 211791, original nObjs: 211819
+Reordering complete!
+ ** CPU sequential time: 0.00 sec
+Sequential reorder time: 0.01 secs
+
+*****Perform Balance*****
+Phase 1 time: 0.998685
+Max cover len: 3
+Total number of covers: 203398
+*** Max Level: 24672
+Reconstruct complete! #reconstructed covers = 203398
+#nodes = 211534
+Phase 2 time: 3.988379
+Total time: 4.987234
+balance: alg time 4.99, full time 4.99
+
+*****Perform Refactor*****
+refactor: perform MFFC covering algorithm
+Refactor: setting cudaLimitStackSize = 65536
+Refactor: checked cudaLimitStackSize = 65536
+refactor: execute with maximum cut size = 12...
+Gathered 128 POs
+Total number of cones to be resyned: 52361
+Truth table computation time: 0.01 sec
+ISOP + factor time: 0.00 sec
+Insertion complete, idCounter = 212585
+Start reordering ...
+Reordered network new nObjs: 211791, original nObjs: 211791
+Reordering complete!
+ ** CPU sequential time: 0.00 sec
+Sequential reorder time: 0.01 secs
+
+*****Perform Rewrite*****
+rewrite: use zeros activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3892.00 MB, free = 20367.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.24 MB
+GPU memory usage: used = 3938.00 MB, free = 20321.69 MB, total = 24259.69 MB
+[548.547] Rewrite Iteration
+0 in EvaluateNode 
+[550.044] Finished GPU enumeration and pre-evaluation
+[550.047] Replacing sub-graphs
+0 after replace 
+N = 235288   n = 211790   n * RATIO = 487116
+before rebuild, nn = 211790
+after rebuild, n = 235168
+successfully replaced 13921 cones (pos 0, zero 13921), reverted 47 cones, compromised 71 cones, pre-eval rejected 141629 cones, small cut reject 0 cones, new idx reject 55866 cones
+after replace, n = 235168
+[550.051] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[550.057] Rewrite Iteration Ends
+real reduction: 0
+** Total Time breakdown: ENUM 43.51, EVAL 0.35, REPLACE 0.22, REORDER 0.20, REDUNDANCY 0.03
+** Replace Time breakdown: COPYBACK 0.04, REID 0.03, CHOICE 0.04
+** CPU sequential time: 0.08 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 235168
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 211534
+rewrite: alg time 1.52, full time 2.86
+
+*****Perform Balance*****
+Phase 1 time: 1.030506
+Max cover len: 3
+Total number of covers: 203327
+*** Max Level: 24673
+Reconstruct complete! #reconstructed covers = 203327
+#nodes = 211534
+Phase 2 time: 4.010052
+Total time: 5.040701
+balance: alg time 5.04, full time 5.04
+
+*****Perform Balance*****
+Phase 1 time: 1.014117
+Max cover len: 3
+Total number of covers: 203327
+*** Max Level: 24673
+Reconstruct complete! #reconstructed covers = 203327
+#nodes = 211534
+Phase 2 time: 4.934426
+Total time: 5.948677
+balance: alg time 5.95, full time 5.95
+
+*****Perform Refactor*****
+refactor: perform MFFC covering algorithm
+Refactor: setting cudaLimitStackSize = 65536
+Refactor: checked cudaLimitStackSize = 65536
+refactor: execute with maximum cut size = 12...
+Gathered 128 POs
+Total number of cones to be resyned: 47625
+Truth table computation time: 0.01 sec
+ISOP + factor time: 0.00 sec
+Insertion complete, idCounter = 212587
+Start reordering ...
+Reordered network new nObjs: 211791, original nObjs: 211791
+Reordering complete!
+ ** CPU sequential time: 0.00 sec
+Sequential reorder time: 0.01 secs
+
+*****Perform Rewrite*****
+rewrite: use zeros activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3892.00 MB, free = 20367.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.24 MB
+GPU memory usage: used = 3938.00 MB, free = 20321.69 MB, total = 24259.69 MB
+[579.645] Rewrite Iteration
+0 in EvaluateNode 
+[581.148] Finished GPU enumeration and pre-evaluation
+[581.152] Replacing sub-graphs
+0 after replace 
+N = 243384   n = 211790   n * RATIO = 487116
+before rebuild, nn = 211790
+after rebuild, n = 243169
+successfully replaced 16644 cones (pos 0, zero 16644), reverted 1974 cones, compromised 93 cones, pre-eval rejected 143282 cones, small cut reject 0 cones, new idx reject 49541 cones
+after replace, n = 243169
+[581.157] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[581.163] Rewrite Iteration Ends
+real reduction: 0
+** Total Time breakdown: ENUM 45.00, EVAL 0.36, REPLACE 0.23, REORDER 0.21, REDUNDANCY 0.04
+** Replace Time breakdown: COPYBACK 0.04, REID 0.03, CHOICE 0.04
+** CPU sequential time: 0.08 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 243169
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 211534
+rewrite: alg time 1.53, full time 2.88
+
+*****Perform Rewrite*****
+rewrite: use zeros activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3892.00 MB, free = 20367.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.24 MB
+GPU memory usage: used = 3938.00 MB, free = 20321.69 MB, total = 24259.69 MB
+[586.313] Rewrite Iteration
+0 in EvaluateNode 
+[587.834] Finished GPU enumeration and pre-evaluation
+[587.838] Replacing sub-graphs
+0 after replace 
+N = 239120   n = 211790   n * RATIO = 487116
+before rebuild, nn = 211790
+after rebuild, n = 239028
+successfully replaced 16225 cones (pos 0, zero 16225), reverted 25 cones, compromised 31 cones, pre-eval rejected 140172 cones, small cut reject 0 cones, new idx reject 55081 cones
+after replace, n = 239028
+[587.843] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[587.848] Rewrite Iteration Ends
+real reduction: 0
+** Total Time breakdown: ENUM 46.51, EVAL 0.37, REPLACE 0.24, REORDER 0.22, REDUNDANCY 0.04
+** Replace Time breakdown: COPYBACK 0.04, REID 0.03, CHOICE 0.04
+** CPU sequential time: 0.09 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 239028
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 211534
+rewrite: alg time 1.55, full time 2.89
+
+*****Perform Rewrite*****
+rewrite: optimize level activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3892.00 MB, free = 20367.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.24 MB
+GPU memory usage: used = 3938.00 MB, free = 20321.69 MB, total = 24259.69 MB
+[594.185] Rewrite Iteration
+0 in EvaluateNode 
+[595.697] Finished GPU enumeration and pre-evaluation
+[595.701] Replacing sub-graphs
+0 after replace 
+N = 211799   n = 211790   n * RATIO = 487116
+before rebuild, nn = 211790
+after rebuild, n = 211798
+successfully replaced 7 cones (pos 7, zero 0), reverted 1 cones, compromised 0 cones, pre-eval rejected 211526 cones, small cut reject 0 cones, new idx reject 0 cones
+after replace, n = 211798
+[595.703] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[595.708] Rewrite Iteration Ends
+real reduction: 7
+** Total Time breakdown: ENUM 48.01, EVAL 0.38, REPLACE 0.24, REORDER 0.22, REDUNDANCY 0.04
+** Replace Time breakdown: COPYBACK 0.04, REID 0.03, CHOICE 0.05
+** CPU sequential time: 0.09 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 211798
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 211527
+rewrite: alg time 1.53, full time 2.88
+
+*****Perform Refactor*****
+refactor: perform MFFC covering algorithm
+Refactor: setting cudaLimitStackSize = 65536
+Refactor: checked cudaLimitStackSize = 65536
+refactor: execute with maximum cut size = 12...
+Gathered 128 POs
+Total number of cones to be resyned: 48117
+Truth table computation time: 0.01 sec
+ISOP + factor time: 0.00 sec
+Insertion complete, idCounter = 212565
+Start reordering ...
+Reordered network new nObjs: 211784, original nObjs: 211784
+Reordering complete!
+ ** CPU sequential time: 0.00 sec
+Sequential reorder time: 0.01 secs
+
+*****Perform Refactor*****
+refactor: use zeros activated!
+refactor: perform MFFC covering algorithm
+Refactor: setting cudaLimitStackSize = 65536
+Refactor: checked cudaLimitStackSize = 65536
+refactor: execute with maximum cut size = 12...
+Gathered 128 POs
+Total number of cones to be resyned: 48117
+Truth table computation time: 0.01 sec
+ISOP + factor time: 0.00 sec
+Insertion complete, idCounter = 212297
+Start reordering ...
+Reordered network new nObjs: 211784, original nObjs: 211784
+Reordering complete!
+ ** CPU sequential time: 0.00 sec
+Sequential reorder time: 0.01 secs
+
+*****Perform Refactor*****
+refactor: perform MFFC covering algorithm
+Refactor: setting cudaLimitStackSize = 65536
+Refactor: checked cudaLimitStackSize = 65536
+refactor: execute with maximum cut size = 12...
+Gathered 128 POs
+Total number of cones to be resyned: 48117
+Truth table computation time: 0.01 sec
+ISOP + factor time: 0.00 sec
+Insertion complete, idCounter = 212297
+Start reordering ...
+Reordered network new nObjs: 211784, original nObjs: 211784
+Reordering complete!
+ ** CPU sequential time: 0.00 sec
+Sequential reorder time: 0.01 secs
+
+*****Perform Balance*****
+Phase 1 time: 1.009054
+Max cover len: 3
+Total number of covers: 203329
+*** Max Level: 24671
+Reconstruct complete! #reconstructed covers = 203329
+#nodes = 211527
+Phase 2 time: 4.917525
+Total time: 5.926713
+balance: alg time 5.93, full time 5.93
+
+*****Perform Strash*****
+
+*****Perform Refactor*****
+refactor: perform MFFC covering algorithm
+Refactor: setting cudaLimitStackSize = 65536
+Refactor: checked cudaLimitStackSize = 65536
+refactor: execute with maximum cut size = 12...
+Gathered 128 POs
+Total number of cones to be resyned: 48117
+Truth table computation time: 0.01 sec
+ISOP + factor time: 0.00 sec
+Insertion complete, idCounter = 212565
+Start reordering ...
+Reordered network new nObjs: 211784, original nObjs: 211784
+Reordering complete!
+ ** CPU sequential time: 0.00 sec
+Sequential reorder time: 0.01 secs
+
+*****Perform Refactor*****
+refactor: perform MFFC covering algorithm
+Refactor: setting cudaLimitStackSize = 65536
+Refactor: checked cudaLimitStackSize = 65536
+refactor: execute with maximum cut size = 12...
+Gathered 128 POs
+Total number of cones to be resyned: 48117
+Truth table computation time: 0.01 sec
+ISOP + factor time: 0.00 sec
+Insertion complete, idCounter = 212297
+Start reordering ...
+Reordered network new nObjs: 211784, original nObjs: 211784
+Reordering complete!
+ ** CPU sequential time: 0.00 sec
+Sequential reorder time: 0.01 secs
+
+*****Perform Strash*****
+
+*****Perform Refactor*****
+refactor: perform MFFC covering algorithm
+Refactor: setting cudaLimitStackSize = 65536
+Refactor: checked cudaLimitStackSize = 65536
+refactor: execute with maximum cut size = 12...
+Gathered 128 POs
+Total number of cones to be resyned: 48117
+Truth table computation time: 0.01 sec
+ISOP + factor time: 0.00 sec
+Insertion complete, idCounter = 212297
+Start reordering ...
+Reordered network new nObjs: 211784, original nObjs: 211784
+Reordering complete!
+ ** CPU sequential time: 0.00 sec
+Sequential reorder time: 0.01 secs
+
+*****Perform Refactor*****
+refactor: perform MFFC covering algorithm
+Refactor: setting cudaLimitStackSize = 65536
+Refactor: checked cudaLimitStackSize = 65536
+refactor: execute with maximum cut size = 12...
+Gathered 128 POs
+Total number of cones to be resyned: 48117
+Truth table computation time: 0.01 sec
+ISOP + factor time: 0.00 sec
+Insertion complete, idCounter = 212297
+Start reordering ...
+Reordered network new nObjs: 211784, original nObjs: 211784
+Reordering complete!
+ ** CPU sequential time: 0.00 sec
+Sequential reorder time: 0.01 secs
+
+*****Perform Refactor*****
+refactor: use zeros activated!
+refactor: perform MFFC covering algorithm
+Refactor: setting cudaLimitStackSize = 65536
+Refactor: checked cudaLimitStackSize = 65536
+refactor: execute with maximum cut size = 12...
+Gathered 128 POs
+Total number of cones to be resyned: 48117
+Truth table computation time: 0.01 sec
+ISOP + factor time: 0.00 sec
+Insertion complete, idCounter = 212297
+Start reordering ...
+Reordered network new nObjs: 211784, original nObjs: 211784
+Reordering complete!
+ ** CPU sequential time: 0.00 sec
+Sequential reorder time: 0.01 secs
+
+*****Perform Rewrite*****
+rewrite: use zeros activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3892.00 MB, free = 20367.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.24 MB
+GPU memory usage: used = 3938.00 MB, free = 20321.69 MB, total = 24259.69 MB
+[655.670] Rewrite Iteration
+0 in EvaluateNode 
+[657.173] Finished GPU enumeration and pre-evaluation
+[657.176] Replacing sub-graphs
+0 after replace 
+N = 240577   n = 211783   n * RATIO = 487100
+before rebuild, nn = 211783
+after rebuild, n = 240340
+successfully replaced 15417 cones (pos 0, zero 15417), reverted 575 cones, compromised 116 cones, pre-eval rejected 145577 cones, small cut reject 0 cones, new idx reject 49842 cones
+after replace, n = 240340
+[657.181] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[657.187] Rewrite Iteration Ends
+real reduction: 0
+** Total Time breakdown: ENUM 49.50, EVAL 0.40, REPLACE 0.25, REORDER 0.23, REDUNDANCY 0.04
+** Replace Time breakdown: COPYBACK 0.04, REID 0.03, CHOICE 0.05
+** CPU sequential time: 0.09 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 240340
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 211527
+rewrite: alg time 1.53, full time 2.87
+
+*****Perform Refactor*****
+refactor: perform MFFC covering algorithm
+Refactor: setting cudaLimitStackSize = 65536
+Refactor: checked cudaLimitStackSize = 65536
+refactor: execute with maximum cut size = 12...
+Gathered 128 POs
+Total number of cones to be resyned: 52363
+Truth table computation time: 0.01 sec
+ISOP + factor time: 0.00 sec
+Insertion complete, idCounter = 212580
+Start reordering ...
+Reordered network new nObjs: 211784, original nObjs: 211784
+Reordering complete!
+ ** CPU sequential time: 0.00 sec
+Sequential reorder time: 0.01 secs
+
+*****Perform Strash*****
+
+*****Perform Refactor*****
+refactor: perform MFFC covering algorithm
+Refactor: setting cudaLimitStackSize = 65536
+Refactor: checked cudaLimitStackSize = 65536
+refactor: execute with maximum cut size = 12...
+Gathered 128 POs
+Total number of cones to be resyned: 52363
+Truth table computation time: 0.01 sec
+ISOP + factor time: 0.00 sec
+Insertion complete, idCounter = 212312
+Start reordering ...
+Reordered network new nObjs: 211784, original nObjs: 211784
+Reordering complete!
+ ** CPU sequential time: 0.00 sec
+Sequential reorder time: 0.01 secs
+
+*****Perform Rewrite*****
+rewrite: optimize level activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3892.00 MB, free = 20367.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.24 MB
+GPU memory usage: used = 3938.00 MB, free = 20321.69 MB, total = 24259.69 MB
+[676.014] Rewrite Iteration
+0 in EvaluateNode 
+[677.517] Finished GPU enumeration and pre-evaluation
+[677.520] Replacing sub-graphs
+0 after replace 
+N = 211783   n = 211783   n * RATIO = 487100
+before rebuild, nn = 211783
+after rebuild, n = 211783
+successfully replaced 0 cones (pos 0, zero 0), reverted 0 cones, compromised 0 cones, pre-eval rejected 211527 cones, small cut reject 0 cones, new idx reject 0 cones
+after replace, n = 211783
+[677.522] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[677.527] Rewrite Iteration Ends
+real reduction: 0
+** Total Time breakdown: ENUM 50.99, EVAL 0.41, REPLACE 0.26, REORDER 0.24, REDUNDANCY 0.04
+** Replace Time breakdown: COPYBACK 0.04, REID 0.03, CHOICE 0.05
+** CPU sequential time: 0.09 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 211783
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 211527
+rewrite: alg time 1.53, full time 2.87
+
+*****Perform Refactor*****
+refactor: use zeros activated!
+refactor: perform MFFC covering algorithm
+Refactor: setting cudaLimitStackSize = 65536
+Refactor: checked cudaLimitStackSize = 65536
+refactor: execute with maximum cut size = 12...
+Gathered 128 POs
+Total number of cones to be resyned: 52363
+Truth table computation time: 0.01 sec
+ISOP + factor time: 0.00 sec
+Insertion complete, idCounter = 212312
+Start reordering ...
+Reordered network new nObjs: 211784, original nObjs: 211784
+Reordering complete!
+ ** CPU sequential time: 0.00 sec
+Sequential reorder time: 0.01 secs
+
+*****Perform Refactor*****
+refactor: use zeros activated!
+refactor: perform MFFC covering algorithm
+Refactor: setting cudaLimitStackSize = 65536
+Refactor: checked cudaLimitStackSize = 65536
+refactor: execute with maximum cut size = 12...
+Gathered 128 POs
+Total number of cones to be resyned: 52481
+Truth table computation time: 0.01 sec
+ISOP + factor time: 0.00 sec
+Insertion complete, idCounter = 219149
+Start reordering ...
+Reordered network new nObjs: 213300, original nObjs: 214592
+Reordering complete!
+ ** CPU sequential time: 0.00 sec
+Sequential reorder time: 0.01 secs
+
+*****Perform Refactor*****
+refactor: perform MFFC covering algorithm
+Refactor: setting cudaLimitStackSize = 65536
+Refactor: checked cudaLimitStackSize = 65536
+refactor: execute with maximum cut size = 12...
+Gathered 128 POs
+Total number of cones to be resyned: 51506
+Truth table computation time: 0.01 sec
+ISOP + factor time: 0.01 sec
+Insertion complete, idCounter = 213983
+Start reordering ...
+Reordered network new nObjs: 213300, original nObjs: 213300
+Reordering complete!
+ ** CPU sequential time: 0.00 sec
+Sequential reorder time: 0.01 secs
+
+*****Perform Rewrite*****
+rewrite: use zeros activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3892.00 MB, free = 20367.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.57 MB
+GPU memory usage: used = 3938.00 MB, free = 20321.69 MB, total = 24259.69 MB
+[769.484] Rewrite Iteration
+0 in EvaluateNode 
+[771.001] Finished GPU enumeration and pre-evaluation
+[771.005] Replacing sub-graphs
+0 after replace 
+N = 254939   n = 213299   n * RATIO = 490587
+before rebuild, nn = 213299
+after rebuild, n = 254911
+successfully replaced 22367 cones (pos 42, zero 22325), reverted 148 cones, compromised 204 cones, pre-eval rejected 142000 cones, small cut reject 0 cones, new idx reject 48324 cones
+after replace, n = 254911
+[771.010] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[771.016] Rewrite Iteration Ends
+real reduction: 44
+** Total Time breakdown: ENUM 52.49, EVAL 0.42, REPLACE 0.27, REORDER 0.25, REDUNDANCY 0.04
+** Replace Time breakdown: COPYBACK 0.04, REID 0.03, CHOICE 0.05
+** CPU sequential time: 0.10 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 254911
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 212999
+rewrite: alg time 1.55, full time 2.90
+
+*****Perform Balance*****
+Phase 1 time: 1.027079
+Max cover len: 3
+Total number of covers: 204783
+*** Max Level: 24671
+Reconstruct complete! #reconstructed covers = 204783
+#nodes = 212999
+Phase 2 time: 4.936174
+Total time: 5.963515
+balance: alg time 5.96, full time 5.97
+
+*****Perform Rewrite*****
+rewrite: optimize level activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3892.00 MB, free = 20367.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.56 MB
+GPU memory usage: used = 3938.00 MB, free = 20321.69 MB, total = 24259.69 MB
+[785.477] Rewrite Iteration
+0 in EvaluateNode 
+[786.996] Finished GPU enumeration and pre-evaluation
+[787.000] Replacing sub-graphs
+0 after replace 
+N = 213260   n = 213255   n * RATIO = 490486
+before rebuild, nn = 213255
+after rebuild, n = 213260
+successfully replaced 3 cones (pos 3, zero 0), reverted 0 cones, compromised 0 cones, pre-eval rejected 212996 cones, small cut reject 0 cones, new idx reject 0 cones
+after replace, n = 213260
+[787.002] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[787.006] Rewrite Iteration Ends
+real reduction: 3
+** Total Time breakdown: ENUM 53.99, EVAL 0.43, REPLACE 0.27, REORDER 0.25, REDUNDANCY 0.04
+** Replace Time breakdown: COPYBACK 0.04, REID 0.03, CHOICE 0.05
+** CPU sequential time: 0.10 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 213260
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 212996
+rewrite: alg time 1.54, full time 4.02
+
+*****Perform Refactor*****
+refactor: use zeros activated!
+refactor: perform MFFC covering algorithm
+Refactor: setting cudaLimitStackSize = 65536
+Refactor: checked cudaLimitStackSize = 65536
+refactor: execute with maximum cut size = 12...
+Gathered 128 POs
+Total number of cones to be resyned: 51367
+Truth table computation time: 0.01 sec
+ISOP + factor time: 0.00 sec
+Insertion complete, idCounter = 214279
+Start reordering ...
+Reordered network new nObjs: 213253, original nObjs: 213253
+Reordering complete!
+ ** CPU sequential time: 0.00 sec
+Sequential reorder time: 0.01 secs
+
+*****Perform Strash*****
+
+*****Perform Rewrite*****
+rewrite: use zeros activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 6270.94 MB, free = 17988.75 MB, total = 24259.69 MB
+memory needed for Cut: 45.56 MB
+GPU memory usage: used = 6316.94 MB, free = 17942.75 MB, total = 24259.69 MB
+[803.762] Rewrite Iteration
+0 in EvaluateNode 
+[805.534] Finished GPU enumeration and pre-evaluation
+[805.538] Replacing sub-graphs
+0 after replace 
+N = 241636   n = 213252   n * RATIO = 490479
+before rebuild, nn = 213252
+after rebuild, n = 241465
+successfully replaced 18215 cones (pos 29, zero 18186), reverted 702 cones, compromised 165 cones, pre-eval rejected 138988 cones, small cut reject 0 cones, new idx reject 54926 cones
+after replace, n = 241465
+[805.543] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[805.548] Rewrite Iteration Ends
+real reduction: 31
+** Total Time breakdown: ENUM 55.75, EVAL 0.45, REPLACE 0.28, REORDER 0.26, REDUNDANCY 0.04
+** Replace Time breakdown: COPYBACK 0.04, REID 0.03, CHOICE 0.05
+** CPU sequential time: 0.10 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 241465
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 212965
+rewrite: alg time 1.81, full time 4.30
+
+*****Perform Rewrite*****
+rewrite: optimize level activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 7620.94 MB, free = 16638.75 MB, total = 24259.69 MB
+memory needed for Cut: 45.55 MB
+GPU memory usage: used = 7666.94 MB, free = 16592.75 MB, total = 24259.69 MB
+[811.723] Rewrite Iteration
+0 in EvaluateNode 
+[813.369] Finished GPU enumeration and pre-evaluation
+[813.372] Replacing sub-graphs
+0 after replace 
+N = 213952   n = 213221   n * RATIO = 490408
+before rebuild, nn = 213221
+after rebuild, n = 213950
+successfully replaced 727 cones (pos 727, zero 0), reverted 2 cones, compromised 0 cones, pre-eval rejected 212236 cones, small cut reject 0 cones, new idx reject 0 cones
+after replace, n = 213950
+[813.375] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[813.380] Rewrite Iteration Ends
+real reduction: 1452
+** Total Time breakdown: ENUM 57.37, EVAL 0.46, REPLACE 0.29, REORDER 0.27, REDUNDANCY 0.04
+** Replace Time breakdown: COPYBACK 0.05, REID 0.03, CHOICE 0.05
+** CPU sequential time: 0.10 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 213950
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 211513
+rewrite: alg time 1.68, full time 3.63
+
+*****Perform Refactor*****
+refactor: perform MFFC covering algorithm
+Refactor: setting cudaLimitStackSize = 65536
+Refactor: checked cudaLimitStackSize = 65536
+refactor: execute with maximum cut size = 12...
+Gathered 128 POs
+Total number of cones to be resyned: 45800
+Truth table computation time: 0.01 sec
+ISOP + factor time: 0.00 sec
+Insertion complete, idCounter = 212798
+Start reordering ...
+Reordered network new nObjs: 211770, original nObjs: 211770
+Reordering complete!
+ ** CPU sequential time: 0.00 sec
+Sequential reorder time: 0.01 secs
+
+*****Perform Rewrite*****
+rewrite: optimize level activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3890.00 MB, free = 20369.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.24 MB
+GPU memory usage: used = 3936.00 MB, free = 20323.69 MB, total = 24259.69 MB
+[822.828] Rewrite Iteration
+0 in EvaluateNode 
+[824.328] Finished GPU enumeration and pre-evaluation
+[824.332] Replacing sub-graphs
+0 after replace 
+N = 211769   n = 211769   n * RATIO = 487068
+before rebuild, nn = 211769
+after rebuild, n = 211769
+successfully replaced 0 cones (pos 0, zero 0), reverted 0 cones, compromised 0 cones, pre-eval rejected 211513 cones, small cut reject 0 cones, new idx reject 0 cones
+after replace, n = 211769
+[824.334] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[824.338] Rewrite Iteration Ends
+real reduction: 0
+** Total Time breakdown: ENUM 58.86, EVAL 0.47, REPLACE 0.29, REORDER 0.27, REDUNDANCY 0.05
+** Replace Time breakdown: COPYBACK 0.05, REID 0.03, CHOICE 0.05
+** CPU sequential time: 0.10 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 211769
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 211513
+rewrite: alg time 1.52, full time 2.88
+
+*****Perform Rewrite*****
+rewrite: use zeros activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3890.00 MB, free = 20369.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.24 MB
+GPU memory usage: used = 3936.00 MB, free = 20323.69 MB, total = 24259.69 MB
+[829.224] Rewrite Iteration
+0 in EvaluateNode 
+[830.747] Finished GPU enumeration and pre-evaluation
+[830.751] Replacing sub-graphs
+0 after replace 
+N = 239277   n = 211769   n * RATIO = 487068
+before rebuild, nn = 211769
+after rebuild, n = 238547
+successfully replaced 16331 cones (pos 0, zero 16331), reverted 80 cones, compromised 372 cones, pre-eval rejected 142996 cones, small cut reject 0 cones, new idx reject 51734 cones
+after replace, n = 238547
+[830.755] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[830.760] Rewrite Iteration Ends
+real reduction: 0
+** Total Time breakdown: ENUM 60.37, EVAL 0.49, REPLACE 0.30, REORDER 0.28, REDUNDANCY 0.05
+** Replace Time breakdown: COPYBACK 0.05, REID 0.03, CHOICE 0.06
+** CPU sequential time: 0.11 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 238547
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 211513
+rewrite: alg time 1.55, full time 2.91
+
+*****Perform Rewrite*****
+rewrite: optimize level activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3890.00 MB, free = 20369.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.24 MB
+GPU memory usage: used = 3936.00 MB, free = 20323.69 MB, total = 24259.69 MB
+[835.916] Rewrite Iteration
+0 in EvaluateNode 
+[837.447] Finished GPU enumeration and pre-evaluation
+[837.450] Replacing sub-graphs
+0 after replace 
+N = 211769   n = 211769   n * RATIO = 487068
+before rebuild, nn = 211769
+after rebuild, n = 211769
+successfully replaced 0 cones (pos 0, zero 0), reverted 0 cones, compromised 0 cones, pre-eval rejected 211513 cones, small cut reject 0 cones, new idx reject 0 cones
+after replace, n = 211769
+[837.452] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[837.457] Rewrite Iteration Ends
+real reduction: 0
+** Total Time breakdown: ENUM 61.89, EVAL 0.50, REPLACE 0.30, REORDER 0.29, REDUNDANCY 0.05
+** Replace Time breakdown: COPYBACK 0.05, REID 0.03, CHOICE 0.06
+** CPU sequential time: 0.11 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 211769
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 211513
+rewrite: alg time 1.55, full time 2.90
+
+*****Perform Balance*****
+Phase 1 time: 1.009371
+Max cover len: 3
+Total number of covers: 203287
+*** Max Level: 24669
+Reconstruct complete! #reconstructed covers = 203287
+#nodes = 211513
+Phase 2 time: 4.934482
+Total time: 5.943988
+balance: alg time 5.94, full time 5.95
+
+*****Perform Balance*****
+Phase 1 time: 1.005832
+Max cover len: 3
+Total number of covers: 203287
+*** Max Level: 24669
+Reconstruct complete! #reconstructed covers = 203287
+#nodes = 211513
+Phase 2 time: 4.033009
+Total time: 5.038972
+balance: alg time 5.04, full time 5.04
+
+*****Perform Refactor*****
+refactor: perform MFFC covering algorithm
+Refactor: setting cudaLimitStackSize = 65536
+Refactor: checked cudaLimitStackSize = 65536
+refactor: execute with maximum cut size = 12...
+Gathered 128 POs
+Total number of cones to be resyned: 52297
+Truth table computation time: 0.01 sec
+ISOP + factor time: 0.00 sec
+Insertion complete, idCounter = 212843
+Start reordering ...
+Reordered network new nObjs: 211770, original nObjs: 211770
+Reordering complete!
+ ** CPU sequential time: 0.00 sec
+Sequential reorder time: 0.01 secs
+
+*****Perform Rewrite*****
+rewrite: use zeros activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 14014.94 MB, free = 10244.75 MB, total = 24259.69 MB
+memory needed for Cut: 45.24 MB
+GPU memory usage: used = 14060.94 MB, free = 10198.75 MB, total = 24259.69 MB
+[866.111] Rewrite Iteration
+0 in EvaluateNode 
+[867.607] Finished GPU enumeration and pre-evaluation
+[867.612] Replacing sub-graphs
+0 after replace 
+N = 236472   n = 211769   n * RATIO = 487068
+before rebuild, nn = 211769
+after rebuild, n = 236306
+successfully replaced 14336 cones (pos 0, zero 14336), reverted 35 cones, compromised 103 cones, pre-eval rejected 141717 cones, small cut reject 0 cones, new idx reject 55322 cones
+after replace, n = 236306
+[867.616] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[867.622] Rewrite Iteration Ends
+real reduction: 0
+** Total Time breakdown: ENUM 63.37, EVAL 0.51, REPLACE 0.31, REORDER 0.29, REDUNDANCY 0.05
+** Replace Time breakdown: COPYBACK 0.05, REID 0.03, CHOICE 0.06
+** CPU sequential time: 0.11 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 236306
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 211513
+rewrite: alg time 1.53, full time 2.87
+
+*****Perform Rewrite*****
+rewrite: optimize level activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3888.00 MB, free = 20371.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.24 MB
+GPU memory usage: used = 3934.00 MB, free = 20325.69 MB, total = 24259.69 MB
+[872.846] Rewrite Iteration
+0 in EvaluateNode 
+[874.373] Finished GPU enumeration and pre-evaluation
+[874.376] Replacing sub-graphs
+0 after replace 
+N = 211769   n = 211769   n * RATIO = 487068
+before rebuild, nn = 211769
+after rebuild, n = 211769
+successfully replaced 0 cones (pos 0, zero 0), reverted 0 cones, compromised 0 cones, pre-eval rejected 211513 cones, small cut reject 0 cones, new idx reject 0 cones
+after replace, n = 211769
+[874.379] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[874.383] Rewrite Iteration Ends
+real reduction: 0
+** Total Time breakdown: ENUM 64.88, EVAL 0.52, REPLACE 0.32, REORDER 0.30, REDUNDANCY 0.05
+** Replace Time breakdown: COPYBACK 0.05, REID 0.04, CHOICE 0.06
+** CPU sequential time: 0.11 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 211769
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 211513
+rewrite: alg time 1.55, full time 2.90
+
+*****Perform Rewrite*****
+rewrite: use zeros activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3888.00 MB, free = 20371.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.24 MB
+GPU memory usage: used = 3934.00 MB, free = 20325.69 MB, total = 24259.69 MB
+[880.401] Rewrite Iteration
+0 in EvaluateNode 
+[881.921] Finished GPU enumeration and pre-evaluation
+[881.924] Replacing sub-graphs
+0 after replace 
+N = 244674   n = 211769   n * RATIO = 487068
+before rebuild, nn = 211769
+after rebuild, n = 244527
+successfully replaced 17078 cones (pos 0, zero 17078), reverted 1945 cones, compromised 116 cones, pre-eval rejected 143283 cones, small cut reject 0 cones, new idx reject 49091 cones
+after replace, n = 244527
+[881.928] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[881.935] Rewrite Iteration Ends
+real reduction: 0
+** Total Time breakdown: ENUM 66.39, EVAL 0.53, REPLACE 0.33, REORDER 0.31, REDUNDANCY 0.05
+** Replace Time breakdown: COPYBACK 0.05, REID 0.04, CHOICE 0.06
+** CPU sequential time: 0.12 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 244527
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 211513
+rewrite: alg time 1.55, full time 2.89
+
+*****Perform Refactor*****
+refactor: perform MFFC covering algorithm
+Refactor: setting cudaLimitStackSize = 65536
+Refactor: checked cudaLimitStackSize = 65536
+refactor: execute with maximum cut size = 12...
+Gathered 128 POs
+Total number of cones to be resyned: 52306
+Truth table computation time: 0.01 sec
+ISOP + factor time: 0.00 sec
+Insertion complete, idCounter = 212824
+Start reordering ...
+Reordered network new nObjs: 211754, original nObjs: 211770
+Reordering complete!
+ ** CPU sequential time: 0.00 sec
+Sequential reorder time: 0.01 secs
+
+*****Perform Balance*****
+Phase 1 time: 0.990084
+Max cover len: 3
+Total number of covers: 203311
+*** Max Level: 24669
+Reconstruct complete! #reconstructed covers = 203311
+#nodes = 211497
+Phase 2 time: 4.009915
+Total time: 5.000169
+balance: alg time 5.00, full time 5.00
+
+*****Perform Refactor*****
+refactor: perform MFFC covering algorithm
+Refactor: setting cudaLimitStackSize = 65536
+Refactor: checked cudaLimitStackSize = 65536
+refactor: execute with maximum cut size = 12...
+Gathered 128 POs
+Total number of cones to be resyned: 52306
+Truth table computation time: 0.01 sec
+ISOP + factor time: 0.00 sec
+Insertion complete, idCounter = 212702
+Start reordering ...
+Reordered network new nObjs: 211754, original nObjs: 211754
+Reordering complete!
+ ** CPU sequential time: 0.00 sec
+Sequential reorder time: 0.01 secs
+
+*****Perform Balance*****
+Phase 1 time: 1.000326
+Max cover len: 3
+Total number of covers: 203364
+*** Max Level: 24669
+Reconstruct complete! #reconstructed covers = 203364
+#nodes = 211497
+Phase 2 time: 8.968893
+Total time: 9.969339
+balance: alg time 9.97, full time 9.97
+
+*****Perform Strash*****
+
+*****Perform Refactor*****
+refactor: perform MFFC covering algorithm
+Refactor: setting cudaLimitStackSize = 65536
+Refactor: checked cudaLimitStackSize = 65536
+refactor: execute with maximum cut size = 12...
+Gathered 128 POs
+Total number of cones to be resyned: 52306
+Truth table computation time: 0.01 sec
+ISOP + factor time: 0.00 sec
+Insertion complete, idCounter = 212702
+Start reordering ...
+Reordered network new nObjs: 211754, original nObjs: 211754
+Reordering complete!
+ ** CPU sequential time: 0.00 sec
+Sequential reorder time: 0.01 secs
+
+*****Perform Rewrite*****
+rewrite: optimize level activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3886.00 MB, free = 20373.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.24 MB
+GPU memory usage: used = 3932.00 MB, free = 20327.69 MB, total = 24259.69 MB
+[931.968] Rewrite Iteration
+0 in EvaluateNode 
+[933.465] Finished GPU enumeration and pre-evaluation
+[933.468] Replacing sub-graphs
+0 after replace 
+N = 211763   n = 211753   n * RATIO = 487031
+before rebuild, nn = 211753
+after rebuild, n = 211760
+successfully replaced 2 cones (pos 2, zero 0), reverted 3 cones, compromised 0 cones, pre-eval rejected 211492 cones, small cut reject 0 cones, new idx reject 0 cones
+after replace, n = 211760
+[933.471] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[933.476] Rewrite Iteration Ends
+real reduction: 2
+** Total Time breakdown: ENUM 67.87, EVAL 0.55, REPLACE 0.33, REORDER 0.31, REDUNDANCY 0.05
+** Replace Time breakdown: COPYBACK 0.05, REID 0.04, CHOICE 0.06
+** CPU sequential time: 0.12 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 211760
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 211495
+rewrite: alg time 1.52, full time 2.99
+
+*****Perform Refactor*****
+refactor: perform MFFC covering algorithm
+Refactor: setting cudaLimitStackSize = 65536
+Refactor: checked cudaLimitStackSize = 65536
+refactor: execute with maximum cut size = 12...
+Gathered 128 POs
+Total number of cones to be resyned: 52306
+Truth table computation time: 0.01 sec
+ISOP + factor time: 0.00 sec
+Insertion complete, idCounter = 212245
+Start reordering ...
+Reordered network new nObjs: 211752, original nObjs: 211752
+Reordering complete!
+ ** CPU sequential time: 0.00 sec
+Sequential reorder time: 0.01 secs
+
+*****Perform Balance*****
+Phase 1 time: 1.086926
+Max cover len: 3
+Total number of covers: 203366
+*** Max Level: 24669
+Reconstruct complete! #reconstructed covers = 203366
+#nodes = 211495
+Phase 2 time: 4.280489
+Total time: 5.367557
+balance: alg time 5.37, full time 5.37
+
+*****Perform Balance*****
+Phase 1 time: 1.073592
+Max cover len: 3
+Total number of covers: 203366
+*** Max Level: 24669
+Reconstruct complete! #reconstructed covers = 203366
+#nodes = 211495
+Phase 2 time: 5.168021
+Total time: 6.241769
+balance: alg time 6.24, full time 6.25
+
+*****Perform Strash*****
+
+*****Perform Refactor*****
+refactor: use zeros activated!
+refactor: perform MFFC covering algorithm
+Refactor: setting cudaLimitStackSize = 65536
+Refactor: checked cudaLimitStackSize = 65536
+refactor: execute with maximum cut size = 12...
+Gathered 128 POs
+Total number of cones to be resyned: 52306
+Truth table computation time: 0.01 sec
+ISOP + factor time: 0.00 sec
+Insertion complete, idCounter = 212676
+Start reordering ...
+Reordered network new nObjs: 211752, original nObjs: 211752
+Reordering complete!
+ ** CPU sequential time: 0.00 sec
+Sequential reorder time: 0.01 secs
+
+*****Perform Balance*****
+Phase 1 time: 2.505078
+Max cover len: 3
+Total number of covers: 203313
+*** Max Level: 24669
+Reconstruct complete! #reconstructed covers = 203313
+#nodes = 211495
+Phase 2 time: 6.701401
+Total time: 9.206615
+balance: alg time 9.21, full time 9.21
+
+*****Perform Rewrite*****
+rewrite: use zeros activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3882.00 MB, free = 20377.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.24 MB
+GPU memory usage: used = 3928.00 MB, free = 20331.69 MB, total = 24259.69 MB
+[994.178] Rewrite Iteration
+0 in EvaluateNode 
+[995.695] Finished GPU enumeration and pre-evaluation
+[995.699] Replacing sub-graphs
+0 after replace 
+N = 240124   n = 211751   n * RATIO = 487027
+before rebuild, nn = 211751
+after rebuild, n = 240030
+successfully replaced 16435 cones (pos 0, zero 16435), reverted 27 cones, compromised 17 cones, pre-eval rejected 140490 cones, small cut reject 0 cones, new idx reject 54526 cones
+after replace, n = 240030
+[995.703] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[995.709] Rewrite Iteration Ends
+real reduction: 0
+** Total Time breakdown: ENUM 69.37, EVAL 0.56, REPLACE 0.34, REORDER 0.32, REDUNDANCY 0.05
+** Replace Time breakdown: COPYBACK 0.05, REID 0.04, CHOICE 0.06
+** CPU sequential time: 0.12 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 240030
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 211495
+rewrite: alg time 1.54, full time 2.88
+
+*****Perform Rewrite*****
+rewrite: use zeros activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3882.00 MB, free = 20377.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.24 MB
+GPU memory usage: used = 3928.00 MB, free = 20331.69 MB, total = 24259.69 MB
+[1000.938] Rewrite Iteration
+0 in EvaluateNode 
+[1002.447] Finished GPU enumeration and pre-evaluation
+[1002.451] Replacing sub-graphs
+0 after replace 
+N = 241366   n = 211751   n * RATIO = 487027
+before rebuild, nn = 211751
+after rebuild, n = 241168
+successfully replaced 15610 cones (pos 2, zero 15608), reverted 795 cones, compromised 41 cones, pre-eval rejected 145660 cones, small cut reject 0 cones, new idx reject 49389 cones
+after replace, n = 241168
+[1002.456] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[1002.462] Rewrite Iteration Ends
+real reduction: 2
+** Total Time breakdown: ENUM 70.87, EVAL 0.57, REPLACE 0.35, REORDER 0.33, REDUNDANCY 0.06
+** Replace Time breakdown: COPYBACK 0.05, REID 0.04, CHOICE 0.07
+** CPU sequential time: 0.13 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 241168
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 211493
+rewrite: alg time 1.54, full time 2.87
+
+*****Perform Rewrite*****
+rewrite: use zeros activated!
+ *** Topo sort time: 0.00 sec
+GPUSolver: setting cudaLimitStackSize = 12 KB
+GPU memory usage: used = 3882.00 MB, free = 20377.69 MB, total = 24259.69 MB
+memory needed for Cut: 45.23 MB
+GPU memory usage: used = 3928.00 MB, free = 20331.69 MB, total = 24259.69 MB
+[1007.635] Rewrite Iteration
+0 in EvaluateNode 
+[1009.154] Finished GPU enumeration and pre-evaluation
+[1009.157] Replacing sub-graphs
+0 after replace 
+N = 241801   n = 211749   n * RATIO = 487022
+before rebuild, nn = 211749
+after rebuild, n = 241695
+successfully replaced 17523 cones (pos 5, zero 17518), reverted 24 cones, compromised 13 cones, pre-eval rejected 139864 cones, small cut reject 0 cones, new idx reject 54069 cones
+after replace, n = 241695
+[1009.162] Finished eval and replace
+ *** Topo sort time: 0.00 sec
+[1009.168] Rewrite Iteration Ends
+real reduction: 5
+** Total Time breakdown: ENUM 72.37, EVAL 0.58, REPLACE 0.36, REORDER 0.34, REDUNDANCY 0.06
+** Replace Time breakdown: COPYBACK 0.05, REID 0.04, CHOICE 0.07
+** CPU sequential time: 0.13 sec
+GPUSolver: setting cudaLimitStackSize = 1024
+after rewrite, n = 241695
+
+*****Perform Strash*****
+rewrite: after rewrite, nNodes = 211488
+rewrite: alg time 1.55, full time 2.88
+
+*****Perform Refactor*****
+refactor: use zeros activated!
+refactor: perform MFFC covering algorithm
+Refactor: setting cudaLimitStackSize = 65536
+Refactor: checked cudaLimitStackSize = 65536
+refactor: execute with maximum cut size = 12...
+Gathered 128 POs
+Total number of cones to be resyned: 48394
+GPUassert: unspecified launch failure,
+at /nfs/home/tensore/CULS_LSV2025/src/algorithms/refactor_mffc.cu, line 849
