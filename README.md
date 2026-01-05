@@ -74,6 +74,10 @@ supervised by Prof. Evangeline F. Y. Young at The Chinese University of Hong Kon
     AIG data structure from ABC to GPU, and from GPU to ABC, respectively,
     similar to the ABC9 package. 
 
+## Benchmarks
+
+Benchmark files can be found in the `benchmarks/` directory in the project root.
+
 ## Publications
 * Shiju Lin, Jinwei Liu, Tianji Liu, Martin D.F. Wong, Evangeline F.Y. Young, 
 "NovelRewrite: Node-Level Parallel AIG Rewriting", 
