@@ -60,6 +60,7 @@ supervised by Prof. Evangeline F. Y. Young at The Chinese University of Hong Kon
     * `rs`: AIG resubstitution
     * `st`: strashing and dangling-node removal
     * `resyn2`: perform the resyn2 optimization script
+        * `-l`: optimize level instead of node count for rewrite operations
     * `resyn2rs`: perform the resyn2rs optimization script
     * `ps`: print AIG statistics
     * `time`: print time statistics
