@@ -2,12 +2,18 @@
 CULS is a GPU-based logic synthesis tool developed by the research team 
 supervised by Prof. Evangeline F. Y. Young at The Chinese University of Hong Kong (CUHK).
 
-## Dependencies
-* CMake >= 3.8
-* GCC >= 7.5.0
-* CUDA >= 11.4
 
-## Building
+## Install for RL
+``` bash
+conda env create -f environment.yml
+conda activate abc_rl
+cd abcRL
+sh setup_abc_py_culs_source.sh #to install abc_py for culs
+```
+default /usr/local/cuda/bin/nvcc
+or set CUDA_NVCC=/path/to/nvcc
+
+## Building for CULS CLI
 * Build as a standalone tool:
     ```bash
     mkdir build && cd build
@@ -40,13 +46,13 @@ supervised by Prof. Evangeline F. Y. Young at The Chinese University of Hong Kon
     
     You can also directly execute a script, e.g., 
     ```bash
-    ./gpuls -c "read ../abc/i10.aig; resyn2; write i10_resyn2.aig"
+    ./gpuls -c "read ../abc/i10.aig; resyn2 -l; write i10_resyn2.aig"
     ```
 * ABC patch mode
 
     The usage is the same as ABC. For instance, 
     ```bash
-    ./abcg -c "read ../abc/i10.aig; gget; gresyn2; gput; print_stats; cec -n"
+    ./abcg -c "read ../abc/i10.aig; gget; gresyn2 -l; gput; print_stats; cec -n"
     ```
 
 ## Commands
@@ -60,6 +66,7 @@ supervised by Prof. Evangeline F. Y. Young at The Chinese University of Hong Kon
     * `rs`: AIG resubstitution
     * `st`: strashing and dangling-node removal
     * `resyn2`: perform the resyn2 optimization script
+        * `-l`: optimize level instead of node count for rewrite operations
     * `resyn2rs`: perform the resyn2rs optimization script
     * `ps`: print AIG statistics
     * `time`: print time statistics
@@ -72,6 +79,28 @@ supervised by Prof. Evangeline F. Y. Young at The Chinese University of Hong Kon
     Additionally, there are two commands `gget` and `gput` for converting the
     AIG data structure from ABC to GPU, and from GPU to ABC, respectively,
     similar to the ABC9 package. 
+### RL mode
+
+```bash
+cd abcRL
+python testReinforce.py
+```
+
+Notes:
+- Edit `abcRL/testReinforce.py` (the `__main__` block) to run other testcases.
+- Example outputs: `results/i10.csv`, `results/i10.png`.
+- Runtime is recorded in `timing.txt`.
+- `i10.aig.cxx` is the C++ log.
+- To use the CPU RL environment, switch the import in `abcRL/testReinforce.py`:
+```python
+# from env import EnvGraph as Env
+from env import EnvGraphGPU as Env
+```
+- The `.csv` file includes the `./abcg -c "..."` command, which can be used to reproduce the RL result.
+
+## Benchmarks
+
+Benchmark files can be found in the `benchmarks/` directory in the project root.
 
 ## Publications
 * Shiju Lin, Jinwei Liu, Tianji Liu, Martin D.F. Wong, Evangeline F.Y. Young, 

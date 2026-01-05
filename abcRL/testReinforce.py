@@ -31,6 +31,27 @@ class AbcReturn:
     def __eq__(self, other):
         return int(self.level) == int(other.level) and int(self.numNodes) == int(self.numNodes)
 
+ACTION_TO_CMD = {
+    0: "gb",
+    1: "gb -s",
+    2: "grf -m",
+    3: "gst",
+    4: "grw -d -l",
+    5: "grw -z -d -l",
+    6: "grf -m -z",
+}
+
+def actions_to_abcg_cmd(filename, actions):
+    if not actions:
+        return ""
+    cmd_parts = [f"read {filename}", "gget", "gb", "grw -d -l"]
+    for act in actions:
+        cmd = ACTION_TO_CMD.get(act)
+        if cmd is not None:
+            cmd_parts.append(cmd)
+    cmd_parts.append("gput")
+    return 'abcg -c "' + "; ".join(cmd_parts) + '"'
+
 def testReinforce(filename, ben):
     now = datetime.now()
     dateTime = now.strftime("%m/%d/%Y, %H:%M:%S") + "\n"
@@ -92,11 +113,15 @@ def testReinforce(filename, ben):
     resultName = "./results/" + ben + ".csv"
     #lastfive.sort(key=lambda x : x.level)
     lastfive = sorted(lastfive)
+    bestCmd = actions_to_abcg_cmd(filename, bestActions)
     with open(resultName, 'a') as andLog:
         line = ""
         line += str(lastfive[0].numNodes)
         line += " "
         line += str(lastfive[0].level)
+        if bestCmd:
+            line += " "
+            line += bestCmd
         line += "\n"
         andLog.write(line)
     rewards = reinforce.sumRewards
@@ -117,6 +142,7 @@ def testReinforce(filename, ben):
         fig.savefig(plotPath)
         plt.close(fig)
     if bestActions is not None:
+        bestActions = [0, 4] + bestActions
         print("best action sequence", bestActions)
     if episodeTimeHistory:
         avgEpisodeTime = statistics.mean(episodeTimeHistory)
@@ -170,11 +196,11 @@ if __name__ == "__main__":
     # testReinforce("./bench/ISCAS/blif/c6288.blif", "c6288")
     # testReinforce("./bench/MCNC/Combinational/blif/apex1.blif", "apex1")
     # testReinforce("./bench/MCNC/Combinational/blif/bc0.blif", "bc0")
-    # testReinforce("./bench/i10.aig", "i10")
+    testReinforce("./bench/i10.aig", "i10")
     # testReinforce("./bench/apex1.aig", "apex1")
     # testReinforce("./bench/bc0.aig", "bc0")
     # testReinforce("./bench/C1355.aig", "C1355")
-    testReinforce("./bench/C5315.aig", "C5315")
+    # testReinforce("./bench/C5315.aig", "C5315")
     # testReinforce("./bench/k2.aig", "k2")
     # testReinforce("./bench/C7552.aig", "C7552")
     # testReinforce("./bench/dalu.aig", "dalu")

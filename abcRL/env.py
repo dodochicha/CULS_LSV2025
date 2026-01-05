@@ -4,7 +4,7 @@
 # @date 10/25/2019
 # @brief The environment classes
 #
-SEQLEN = 40.0
+SEQLEN = 38
 import abc_py as abcPy
 import numpy as np
 import graphExtractor as GE
@@ -467,6 +467,7 @@ class EnvGraphGPU(object):
         self._gpu_command("grw -z -d -l")
         self._gpu_command("grw -z -d -l")
         self._gpu_command("gb -s")
+        self._gpu_put()
 
     def reset(self):
         self.lenSeq = 0
@@ -476,6 +477,14 @@ class EnvGraphGPU(object):
         self._abc.read(self._aigfile)
         with _redirect_c_stdout_stderr(self._cxx_log_path):
             self._lastStats = self._abc.aigStats()  # The initial AIG statistics
+
+        # Fixed first two commands (not counted toward SEQLEN).
+        self._gpu_command("gb")
+        self._gpu_command("grw -d -l")
+        self._gpu_put()
+
+        with _redirect_c_stdout_stderr(self._cxx_log_path):
+            self._lastStats = self._abc.aigStats()
         self._curStats = self._lastStats  # the current AIG statistics
         self.lastAct = self.numActions() - 1
         self.lastAct2 = self.numActions() - 1
